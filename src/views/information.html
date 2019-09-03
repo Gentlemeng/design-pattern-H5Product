@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no,telephone=no" />
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title></title>
+    <script>
+       if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent))) {
+            window.location.href = "http://www.tjresearch.cn";
+        }
+        function token() {
+            var time = 1000 * 60 * 15;
+            var sessionData = sessionStorage.getItem("Authentication");
+            if (sessionData == null || JSON.parse(sessionData).data == undefined) {
+                if (window.location.href.split("token=").length == 1) {
+                    sessionStorage.removeItem("Authentication");
+                } else {
+                    sessionStorage.removeItem("Authentication");
+                    sessionStorage.setItem("Authentication", JSON.stringify({
+                        data: parseURL(window.location.href).token,
+                        time: new Date().getTime()
+                    }));
+                    window.location.href = getUrlParam(window.location.href);
+                }
+            } else if (new Date().getTime() - JSON.parse(sessionData).time > time) {
+                sessionStorage.removeItem("Authentication");
+                sessionStorage.setItem("Authentication", JSON.stringify({
+                    data: parseURL(window.location.href).token,
+                    time: new Date().getTime()
+                }));
+                window.location.href = getUrlParam(window.location.href);
+            }
+        }
+        //获取url中的参数
+        function parseURL(url) {
+            var urlCopy = url.replace(/\&amp;/g, "&").split("?")[1];
+            var res = {};
+            if (urlCopy) {
+                var para = urlCopy.split("&");
+                var len = para.length;
+                var arr = [];
+                for (var i = 0; i < len; i++) {
+                    arr = para[i].split("=");
+                    res[arr[0]] = decodeURI(decodeURI(arr[1]))
+                }
+            }
+            return res;
+        };
+        // 切token
+        function getUrlParam(param) {
+            var aa = parseURL(param),
+                url = param.split("?")[0],
+                paramString = "?";
+            delete aa.token;
+            if (Object.keys(aa) == 1) {
+                Object.keys(aa).forEach(function (v) {
+                    paramString = paramString + v + "=" + aa[v];
+                })
+            } else {
+                for (var i = 0; i < Object.keys(aa).length; i++) {
+                    if (i == Object.keys(aa).length - 1) {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]];
+                    } else {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]] + "&";
+                    }
+                }
+            }
+            if (paramString != "?") {
+                url += paramString;
+            }
+            return url;
+        }
+        token();
+    </script>
+    <!-- 公用css -->
+    <link rel="stylesheet" href="./../assets/css/common/reset.css">
+    <link rel="stylesheet" href="./../assets/css/common/base.css">
+    <link rel="stylesheet" href="./../assets/css/dist/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="./../assets/css/dist/dialog.css">
+    <link rel="stylesheet" href="./../assets/css/dist/mescroll.css">
+    <link rel="stylesheet" href="./../assets/css/information.css">
+</head>
+<body>
+    <!-- container st -->
+    <div class="container">
+        <div class="main">
+            <div class="info_introduce">
+                <img class="titlePictrue" src="../assets/images/information/information_title.png" alt=""/>
+                <div class="information_rule_wrap">
+                    <div class="rule_btn information_rule_btn">规 则</div>
+                </div>
+            </div>
+            <div class="swiper-container info_swiper">
+                <div class="my-pagination info_tab">
+                    <ul class="my-pagination-ul info_tab_ul">
+                        <!-- <li class="swiper-pagination-bullet">每日十条</li> -->
+                    </ul>
+                </div>
+                <div class="swiper-wrapper info_swiper_wrapper">
+                    <div class="swiper-slide essay_slide">
+                        <div class="essay_slide_scroll">
+                            <div class="essay">
+                                    <div id="hotTime">
+                                        <div id="time_day"></div>
+                                        <div id="time_mon"></div>
+                                    </div>
+                                <div id="essayMain" class="essay_main mescroll">
+                                    <ul id="essayUl" class="essay_ul essay_list_ul">
+                                        <!-- <li class="essay_list">
+                                                    <div class="essay_txt">
+                                                        <div class="essay_title justify col_3_hide">媒体：吉利在宁波建新工厂剑指中大型车市场媒体：吉利在宁波建新工厂剑指中大型车市场媒体：吉利在宁波建新工厂剑指中大型车市场媒体：吉利在宁波建新工厂剑指中大型车市场</div>
+                                                        <div class="essay_author">
+                                                            <span class="essay_auth">尼古拉斯</span>
+                                                            <span class="essay_publish_time">2018-09-30</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="essay_img_wrap">
+                                                        <img class="essay_img" src="./../assets/images/information/essay01.png">
+                                                        <div class="badge"></div>
+                                                    </div>
+                                                </li>
+                                                <li class="essay_list">
+                                                    <div class="essay_txt">
+                                                        <div class="essay_title justify col_3_hide">媒体：吉利在宁波建新工厂剑指中大型车市场媒体：吉利</div>
+                                                        <div class="essay_author">
+                                                            <span class="essay_auth">尼古拉斯</span>
+                                                            <span class="essay_publish_time">2018-09-30</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="essay_img_wrap">
+                                                            <img class="essay_img" src="./../assets/images/information/essay02.png">
+                                                            <div class="badge"></div>
+                                                    </div>
+                                                </li>
+                                                <li class="essay_list">
+                                                    <div class="essay_txt">
+                                                        <div class="essay_title justify col_3_hide">媒体：吉利在宁波建新工厂剑指中大型车市场</div>
+                                                        <div class="essay_author">
+                                                            <span class="essay_auth">尼古拉斯</span>
+                                                            <span class="essay_publish_time">2018-09-30</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="essay_img_wrap">
+                                                            <img class="essay_img" src="./../assets/images/information/essay03.png">
+                                                            <div class="badge"></div>
+                                                    </div>
+                                                </li> -->
+                                    </ul>
+                                    <!-- <p class="no_more_data">无更多资讯</p>                                     -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide hot_slide">
+                        <div class="hot_slide_scroll">
+                            <div class="hot">
+                                <div id="hotMain" class="hot_main mescroll">
+                                    <ul id="hotUl" class="hot_ul essay_list_ul"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- </div> -->
+            <!-- </div> -->
+        </div>
+        <footer class="footer">
+            <a href="./forecast.html">
+                <em class="tab_forecast"></em>
+                <span>预测</span>
+            </a>
+            <a href="./participation.html">
+                <em class="tab_participation"></em>
+                <span>参与</span>
+            </a>
+            <a href="./expert.html">
+                <em class="tab_expert"></em>
+                <span>专家</span>
+            </a>
+            <a href="./information.html" class="activehome">
+                <em class="tab_information"></em>
+                <span>资讯</span>
+            </a>
+            <a href="./myself.html">
+                <em class="tab_myself"></em>
+                <span>我的</span>
+            </a>
+        </footer>
+        <div class="star_layer">
+            <div class="star_choose_wrap">
+                <p class="star_comment">用户评价</p>
+                <div class="star_wrap">
+                    <p class="bull star_text">利好</p>
+                    <div class="star_content">
+                        <ul class="star_ul">
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                        </ul>
+                    </div>
+                    <p class="bear star_text">利空</p>
+                </div>
+                <div class="star_confirm">确定</div>
+            </div>
+            <div class="star_close"></div>
+        </div>
+        <div class="rule_layer_wrap">
+            <div class="rule_info_wrap">
+                <p class="rule_title">活动规则</p>
+                <div class="rule_info_con">
+                    <ol class="rule_info"></ol>
+                </div>
+            </div>
+            <div class="rule_close"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./../assets/js/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/common/sizerem.js"></script>
+    <script type="text/javascript" src="./../assets/js/dist/swiper-3.4.2.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script type="text/javascript" src="./../assets/js/common/common.js"></script>
+    <script type="text/javascript" src="./../assets/js/dist/mescroll.js"></script>
+    <script type="text/javascript" src="./../assets/js/dist/dialog.js"></script>
+    <script type="text/javascript" src="./../assets/js/information.js"></script>
+</body>
+
+</html>
+

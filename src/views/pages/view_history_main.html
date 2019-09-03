@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no,telephone=no" />
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>往期观点</title>
+    <script>
+        if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent))) {
+            window.location.href = "http://www.tjresearch.cn";
+        }
+
+        function token() {
+            var time = 1000 * 60 * 15;
+            var sessionData = sessionStorage.getItem("Authentication");
+            if (sessionData == null || JSON.parse(sessionData).data == undefined) {
+                if (window.location.href.split("token=").length == 1) {
+                    sessionStorage.removeItem("Authentication");
+                } else {
+                    sessionStorage.removeItem("Authentication");
+                    sessionStorage.setItem("Authentication", JSON.stringify({
+                        data: parseURL(window.location.href).token,
+                        time: new Date().getTime()
+                    }));
+                    window.location.href = getUrlParam(window.location.href);
+                }
+            } else if (new Date().getTime() - JSON.parse(sessionData).time > time) {
+                sessionStorage.removeItem("Authentication");
+                sessionStorage.setItem("Authentication", JSON.stringify({
+                    data: parseURL(window.location.href).token,
+                    time: new Date().getTime()
+                }));
+                window.location.href = getUrlParam(window.location.href);
+            }
+        }
+        //获取url中的参数
+        function parseURL(url) {
+            var urlCopy = url.replace(/\&amp;/g, "&").split("?")[1];
+            var res = {};
+            if (urlCopy) {
+                var para = urlCopy.split("&");
+                var len = para.length;
+                var arr = [];
+                for (var i = 0; i < len; i++) {
+                    arr = para[i].split("=");
+                    res[arr[0]] = decodeURI(decodeURI(arr[1]))
+                }
+            }
+            return res;
+        };
+        // 切token
+        function getUrlParam(param) {
+            var aa = parseURL(param),
+                url = param.split("?")[0],
+                paramString = "?";
+            delete aa.token;
+            if (Object.keys(aa) == 1) {
+                Object.keys(aa).forEach(function (v) {
+                    paramString = paramString + v + "=" + aa[v];
+                })
+            } else {
+                for (var i = 0; i < Object.keys(aa).length; i++) {
+                    if (i == Object.keys(aa).length - 1) {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]];
+                    } else {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]] + "&";
+                    }
+                }
+            }
+            if (paramString != "?") {
+                url += paramString;
+            }
+            return url;
+        }
+        token();
+    </script>
+    <!-- 公用css -->
+    <link rel="stylesheet" href="./../../assets/css/common/reset.css">
+    <link rel="stylesheet" href="./../../assets/css/common/base.css">
+    <link rel="stylesheet" href="./../../assets/css/dist/dialog.css">
+    <link rel="stylesheet" href="./../../assets/css/participation.css">
+    <link rel="stylesheet" href="./../../assets/css/Secondary_page/view_history_main.css">
+    <link rel="stylesheet" href="./../../assets/css/dist/mescroll.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="back_wrap">
+            <a class="back" href="./view_list.html">
+            </a>
+        </div>
+        <header>往期观点</header>
+        <div class="viewpoint_slide_scroll">
+            <div id="viewPoint" class="viewpoint mescroll">
+                <div class="view_main">
+                    <!-- <h2 class="view_title"></h2> -->
+                    <!-- <div class="guess_rule_wrap clear">
+                        <div class="rule_btn view_rule_btn right">规 则</div>
+                    </div> 
+                    <div class="view_history">
+                        <a href="./pages/view_list.html">查看往期观点>></a>
+                    </div>-->
+                    <div class="expert_view_wrap">
+                        <h3 class="view_current"></h3>
+                        <div class="expert_view_txt justify"></div>
+                    </div>
+                    <div class="essay_handle_wrap">
+                        <!-- <div class="essay_handle">
+                            <div class="support">
+                                <button class="opinion_btn support_btn">支持</button>
+                            </div>
+                            <div class="neutral">
+                                <button class="opinion_btn neutral_btn">中立</button>
+                            </div>
+                            <div class="oppose">
+                                <button class="opinion_btn oppose_btn">反对</button>
+                            </div>
+                        </div> -->
+                        <div class="essay_opinion">
+                                <div class="opinion_detail">
+                                        <div class="support_detail">
+                                            支持：<span class="support_percent"></span>
+                                        </div>
+                                        <div class="neutral_detail">
+                                            中立：<span class="neutral_percent"></span>
+                                        </div>
+                                        <div class="oppose_detail">
+                                            反对：<span class="oppose_percent"></span>
+                                        </div>
+                                    </div>
+                            <div class="opinion_bar">
+                                <div class="support_bar"></div>
+                                <div class="neutral_bar"></div>
+                                <div class="oppose_bar"></div>
+                            </div>
+                            <!-- <div class=""></div> -->
+                            <div class="my_opinion">
+                                你已经选择<span class="opinion_txt">支持</span>,恭喜您投票成功。
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="partici_rule viewpoint_rule">
+                                <p class="rule">
+                                    活动规则
+                                </p>
+                                <ol class="rule_info">
+                                </ol>
+                            </div> -->
+                </div>
+                <div class="view_comment"></div>
+                <ul id="answerUl" class="answer_ul">
+                    <!-- <li class="answer_list">
+                                <div class="answer_user">
+                                    <span class="user_avatar"></span>
+                                    <span class="user_name">admin</span>
+                                </div>
+                                <div class="answer_con">
+                                    <p class="answer_txt">非常同意</p>
+                                </div>
+                                <div class="answer_handle">
+                                    <div class="answer_attitude" parent_id="${list.fCommentId}">
+                                        <span class="hand like"></span>
+                                        <i class="like_num">123</i>
+                                        <span class="hand dislike"></span>
+                                        <i class="dislike_num">456</i>
+                                    </div>
+                                </div>
+                            </li> -->
+                </ul>
+                <p class="no_sign_in">登录后查看留言</p>
+            </div>
+        </div>
+    </div>
+    <!--移动端适配-->
+    <script type="text/javascript" src="./../../assets/js/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./../../assets/js/common/sizerem.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script type="text/javascript" src="./../../assets/js/common/common.js"></script>
+    <script src="./../../assets/js/dist/dialog.js"></script>
+    <script type="text/javascript" src="./../../assets/js/dist/mescroll.js"></script>
+    <script type="text/javascript" src="./../../assets/js/Secondary_page/view_history_main.js"></script>
+</body>
+
+</html>

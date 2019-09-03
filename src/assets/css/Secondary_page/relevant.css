@@ -1,0 +1,124 @@
+.main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.relevant_header{
+    height: 1rem;
+    background-color: #00a0e9;
+}
+.relevant_header .back{
+    position: relative;
+    top: -0.62rem;
+}
+.relevant_header .title{
+    text-align: center;
+    line-height: 1rem;
+    font-size: 0.34rem;
+    color: #fff;
+}
+.relevant_title {
+    height: 0.8rem;
+}
+
+.relevant_title .tabSelect {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.relevant_title .tabSelect ul li {
+    width: 50%;
+    height: 0.8rem;
+    float: left;
+    background-color: #fff;
+}
+
+.relevant_title .tabSelect ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 0.9rem;
+    color: #000;
+    font-size: 0.36rem;
+    border-bottom: 2px solid #d6d6d6;
+}
+
+.relevant_title .tabs li a:hover,
+.relevant_title .tabs li a.liactive {
+    color: #5398ff;
+    border-bottom: 2px solid #5398ff;
+    opacity: 1;
+}
+
+/* 我的提问 */
+.guess_ul li {
+    height: 2rem;
+}
+.guess_ul,
+.join_ul {
+    background-color: #fff;
+}
+.join_ul .title {
+    height: 0.9rem;    
+    padding-top: 0.2rem;
+}
+
+.join_ul .title a {
+    font-size: 0.3rem;
+    color: #0f0f0f;
+}
+.join_ul .tips{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #878686;
+    font-size: 14px;
+}
+.join_ul .tips p{
+    width: 1.2rem;
+}
+.guess_ul li,
+.join_ul li{
+    height: 1.4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);    
+    padding: 0 0.3rem;
+}
+.mescroll-upwarp{
+    background-color: #fff;
+    min-height: unset;
+}
+.guess_ul{
+    display: none;
+}
+.guess_ul li a{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+.guess_ul li a p{
+    font-size: 0.3rem;
+    color: #878787;
+}
+.guess_ul li a .content{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+}
+.guess_ul li a .content p{
+    font-size: 0.3rem;
+    color: #1a1a1a;   
+    margin-right: 0.8rem;
+}
+
+.guess_ul li a .content .img{
+    height: 0.28rem;
+    width: 0.2rem;
+}
+
+.guess_ul .line{
+    height: 0.2rem;
+    background-color: #d7d7d7;
+}

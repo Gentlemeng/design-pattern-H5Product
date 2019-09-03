@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script>
+        if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent))) {
+            window.location.href = "http://www.tjresearch.cn";
+        }
+
+        function token() {
+            var time = 1000 * 60 * 15;
+            var sessionData = sessionStorage.getItem("Authentication");
+            if (sessionData == null || JSON.parse(sessionData).data == undefined) {
+                if (window.location.href.split("token=").length == 1) {
+                    sessionStorage.removeItem("Authentication");
+                } else {
+                    sessionStorage.removeItem("Authentication");
+                    sessionStorage.setItem("Authentication", JSON.stringify({
+                        data: parseURL(window.location.href).token,
+                        time: new Date().getTime()
+                    }));
+                    window.location.href = getUrlParam(window.location.href);
+                }
+            } else if (new Date().getTime() - JSON.parse(sessionData).time > time) {
+                sessionStorage.removeItem("Authentication");
+                sessionStorage.setItem("Authentication", JSON.stringify({
+                    data: parseURL(window.location.href).token,
+                    time: new Date().getTime()
+                }));
+                window.location.href = getUrlParam(window.location.href);
+            }
+        }
+        //获取url中的参数
+        function parseURL(url) {
+            var urlCopy = url.replace(/\&amp;/g, "&").split("?")[1];
+            var res = {};
+            if (urlCopy) {
+                var para = urlCopy.split("&");
+                var len = para.length;
+                var arr = [];
+                for (var i = 0; i < len; i++) {
+                    arr = para[i].split("=");
+                    res[arr[0]] = decodeURI(decodeURI(arr[1]))
+                }
+            }
+            return res;
+        };
+        // 切token
+        function getUrlParam(param) {
+            var aa = parseURL(param),
+                url = param.split("?")[0],
+                paramString = "?";
+            delete aa.token;
+            if (Object.keys(aa) == 1) {
+                Object.keys(aa).forEach(function (v) {
+                    paramString = paramString + v + "=" + aa[v];
+                })
+            } else {
+                for (var i = 0; i < Object.keys(aa).length; i++) {
+                    if (i == Object.keys(aa).length - 1) {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]];
+                    } else {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]] + "&";
+                    }
+                }
+            }
+            if (paramString != "?") {
+                url += paramString;
+            }
+            return url;
+        }
+        token();
+    </script>
+    <link rel="stylesheet" href="./../../assets/css/common/reset.css">
+    <link rel="stylesheet" href="./../../assets/css/common/base.css">
+    <link rel="stylesheet" href="./../../assets/css/dist/dialog.css">
+    <link rel="stylesheet" href="./../../assets/css/dist/mescroll.css">
+    <link rel="stylesheet" href="./../../assets/css/Secondary_page/forecast_index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main" id="main">
+            <!-- 线图 -->
+            <div class="chart">
+                <div class="header">
+                    <div class="back"></div>
+                    <div class="title"></div>
+                    <div class="follow"></div>
+                </div>
+                <div class="old">
+                    <div class="tips">
+                        <div><br /><br /></div>
+                    </div>
+                    <section class="tabSelect">
+                        <ul class="tabs clear">
+                            <!-- <li>
+                                <a class="liactive" href="javascript:;" flag="One">近一年</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" flag="Three">近三年</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" flag="Five">近五年</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" flag="All">所有数据</a>
+                            </li> -->
+                        </ul>
+                    </section>
+                    <div class="legend">
+                        <div class="flagImg history">
+                            <hr /><span>历史</span>
+                        </div>
+                        <div class="flagImg pre">
+                            <hr /><span>预测</span>
+                        </div>
+                        <div class="flagImg season">
+                            <hr /><span>季调</span>
+                        </div>
+                    </div>
+                    <div class="data_info">
+                        <p class="unit"></p>
+                        <div class="high_data">
+                            <span class="time"></span>
+                            <span class="name"></span>
+                            <div class="data">
+                                <span></span>
+                                <img src="" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line_chart">
+                        <div id="data_chart"></div>
+                        <div class="spot">
+                            <img src="./../../assets/images/forecast/spot.gif">
+                        </div>
+                    </div>
+                    <div class="original">
+                        <span flag="1"></span>
+                    </div>
+                </div>
+                <div class="new">
+                    <div class="title">
+                        <h4>腾景预测 VS 用户预测</h4>
+                        <img class="close" src="./../../assets/images/btn/close.png">
+                    </div>
+                    <div class="legend">
+                        <div class="flagImg pre">
+                            <div class="preImg">腾景预测</div>
+                        </div>
+                        <div class="flagImg history">
+                            <div class="historyImg">用户预测平均值</div>
+                        </div>
+                    </div>
+                    <div class="line_chart">
+                        <div id="data_chart_new"></div>
+                    </div>
+                </div>
+                <div class="newNew">
+                    <div class="title">
+                        <h4>近期走势</h4>
+                        <img class="close" src="./../../assets/images/btn/close.png">
+                    </div>
+                    <div class="line_chart">
+                        <div id="data_chart_newNew"></div>
+                    </div>
+                </div>
+                <div class="rate">
+                    <div class="contrast">
+                        <!-- <img src="./../../assets/images/forecast/arrow.png"> -->
+                        <span>预测对比图</span>
+                    </div>
+                    <div class="trend">
+                        <!-- <img src="./../../assets/images/forecast/arrow.png"> -->
+                        <span>查看近期走势</span>
+                    </div>
+                    <p>预测准确率：</p>
+                    <p class="value"></p>
+                </div>
+            </div>
+            <!-- 预测结果描述 -->
+            <div class="preResult">
+                <div class="title">预测结果描述</div>
+                <div class="con">
+                    <div class="table">
+                        <!-- <div class="table-box">
+                                <div class="text">201901</div>
+                                <div class="data"></div>
+                            </div> -->
+                    </div>
+                    <div class="describe"></div>
+                </div>
+            </div>
+            <!-- 高频new -->
+            <div class="highNew">
+                <div class="title">高频数据</div>
+                <div class="con">
+                    <!-- <div class="table">
+                        <div class="table-box">
+                            <div class="text">2019<br>01-31</div>
+                            <div class="data"></div>
+                        </div>
+                        <div class="table-box">
+                            <div class="text">2019<br>01-31</div>
+                            <div class="data"></div>
+                        </div>
+                        <div class="table-box">
+                            <div class="text">2019<br>01-31</div>
+                            <div class="data"></div>
+                        </div>
+                        <div class="table-box">
+                            <div class="text">2019<br>01-31</div>
+                            <div class="data"></div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <!-- 高频 -->
+            <div class="high">
+                <div class="title">高频数据</div>
+                <div class="table"></div>
+            </div>
+            <!-- 专家评论 -->
+            <div class="comment">
+                <div class="title">首席专家评论</div>
+                <div class="content">
+                    <section class="article"></section>
+                    <a href="javascript:;">全部专家评论 ></a>
+                    <div class="operate">
+                        <div class="btns">
+                            <div class="support">喜欢</div>
+                            <div class="oppose">不喜欢</div>
+                        </div>
+                        <div class="result">
+                            <div class="tip"></div>
+                            <!-- <div class="tip">你已经选择<span></span>,恭喜您投票成功。</div> -->
+                            <div id="result_chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="commentTips">暂无数据</div>
+            </div>
+            <!-- 精彩评论 -->
+            <div class="opinion">
+                <div class="title">精彩评论</div>
+                <div class="content">
+                    <ul class="opinion_ul">
+                        <!-- <li>
+                            <div class="user">
+                                <div class="tips">
+                                    <div class="photo"></div>
+                                    <div class="info">
+                                        <p>admin</p>
+                                        <p>2018-09-20 16:01</p>
+                                    </div>
+                                </div>
+                                <div class="btns">
+                                    <p>11.256万</p>
+                                    <div class="support"></div>
+                                    <div class="oppose"></div>
+                                    <div class="reply">回复</div>
+                                </div>
+                            </div>
+                            <div class="content">2013年2月28日，结合移动手机使用场景，百度翻译正式推出Android手机客户端。</div>
+                            <div class="reply_content">
+                                <ul class="reply_ul">
+                                    <li>
+                                        <span>横说竖说<span>回复</span>admin</span>
+                                        <span>2013年2月28日，结合移动手机使用场景，百度翻译正式推出Android手机客户端。</span>
+                                        <span class="reply">回复</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- 最新评论 -->
+            <div class="newOpinion">
+                <div class="title">最新评论</div>
+                <div class="content" id="newOpinion">
+                </div>
+            </div>
+            <ul class="opinion_ul" id="opinion_ul"></ul>
+        </div>
+        <div class="publish" id="publish">
+            <textarea id="txt" placeholder="发表观点"></textarea>
+            <p class="send">发送</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="./../../assets/js/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./../../assets/js/dist/echarts.min.js"></script>
+    <script type="text/javascript" src="./../../assets/js/common/sizerem.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script type="text/javascript" src="./../../assets/js/common/common.js"></script>
+    <script src="./../../assets/js/dist/dialog.js"></script>
+    <script type="text/javascript" src="./../../assets/js/dist/mescroll.js"></script>
+    <script type="text/javascript" src="./../../assets/js/Secondary_page/forecast_index.js"></script>
+</body>
+
+</html>

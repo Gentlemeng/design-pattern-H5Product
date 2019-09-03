@@ -1,0 +1,87 @@
+.container .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.8rem;
+}
+
+.container .logo .logo1 {
+    width: 1.6rem;
+    height: 1.6rem;
+    display: none;
+}
+
+.container .logo .logo2 {
+    width: 4.4rem;
+    height: 0.65rem;
+    display: none;
+}
+
+.container .nowx,
+.container .wx {
+    display: none;
+}
+.container .nowx p{
+    font-size: 0.4rem;
+    color: #343434;
+    text-align: center;
+    margin: 0.2rem 0;
+}
+.container .wx h4 {
+    font-size: 0.24rem;
+    color: #929292;
+    border-bottom: 1px solid #eee;
+    margin: 0 0.2rem;
+    padding: 0.2rem 0;
+}
+
+.wx .content .gold,
+.wx .content .day {
+    display: none;
+    font-size: 0.2rem;
+    color: #333;
+    padding: 0.4rem 0.6rem;
+}
+
+.wx .content .gold p,
+.wx .content .day p {
+    margin-bottom: 0.2rem;
+}
+
+.wx .content .gold span,
+.wx .content .day span {
+    font-size: 0.3rem;
+    color: #d83024;
+    margin: 0 0.14rem;
+}
+
+.wx .content .btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.wx .content .btns button {
+    width: 1.8rem;
+    height: 0.7rem;
+    font-size: 0.25rem;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.wx .content .btns button#activate {
+    background: -webkit-linear-gradient(to right, #f92421, #f45353);
+    background: -o-linear-gradient(to right, #f92421, #f45353);
+    background: -moz-linear-gradient(to right, #f92421, #f45353);
+    background: linear-gradient(to right, #f92421, #f45353);
+    margin-right: 1rem;
+}
+
+.wx .content .btns button#cancel {
+    background: -webkit-linear-gradient(to right, #14bb5b, #5feb7d);
+    background: -o-linear-gradient(to right, #14bb5b, #5feb7d);
+    background: -moz-linear-gradient(to right, #14bb5b, #5feb7d);
+    background: linear-gradient(to right, #14bb5b, #5feb7d);
+}

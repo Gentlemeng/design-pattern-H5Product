@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no,telephone=no" />
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title></title>
+    <script>
+        if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent))) {
+            window.location.href = "http://www.tjresearch.cn";
+        }
+        function token() {
+            var time = 1000 * 60 * 15;
+            var sessionData = sessionStorage.getItem("Authentication");
+            if (sessionData == null || JSON.parse(sessionData).data == undefined) {
+                if (window.location.href.split("token=").length == 1) {
+                    sessionStorage.removeItem("Authentication");
+                } else {
+                    sessionStorage.removeItem("Authentication");
+                    sessionStorage.setItem("Authentication", JSON.stringify({
+                        data: parseURL(window.location.href).token,
+                        time: new Date().getTime()
+                    }));
+                    window.location.href = getUrlParam(window.location.href);
+                }
+            } else if (new Date().getTime() - JSON.parse(sessionData).time > time) {
+                sessionStorage.removeItem("Authentication");
+                sessionStorage.setItem("Authentication", JSON.stringify({
+                    data: parseURL(window.location.href).token,
+                    time: new Date().getTime()
+                }));
+                window.location.href = getUrlParam(window.location.href);
+            }
+        }
+        //获取url中的参数
+        function parseURL(url) {
+            var urlCopy = url.replace(/\&amp;/g, "&").split("?")[1];
+            var res = {};
+            if (urlCopy) {
+                var para = urlCopy.split("&");
+                var len = para.length;
+                var arr = [];
+                for (var i = 0; i < len; i++) {
+                    arr = para[i].split("=");
+                    res[arr[0]] = decodeURI(decodeURI(arr[1]))
+                }
+            }
+            return res;
+        };
+        // 切token
+        function getUrlParam(param) {
+            var aa = parseURL(param),
+                url = param.split("?")[0],
+                paramString = "?";
+            delete aa.token;
+            if (Object.keys(aa) == 1) {
+                Object.keys(aa).forEach(function (v) {
+                    paramString = paramString + v + "=" + aa[v];
+                })
+            } else {
+                for (var i = 0; i < Object.keys(aa).length; i++) {
+                    if (i == Object.keys(aa).length - 1) {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]];
+                    } else {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]] + "&";
+                    }
+                }
+            }
+            if (paramString != "?") {
+                url += paramString;
+            }
+            return url;
+        }
+        token();
+    </script>
+    <!-- 公用css -->
+    <link rel="stylesheet" href="./../../assets/css/common/reset.css">
+    <link rel="stylesheet" href="./../../assets/css/common/base.css">
+    <link rel="stylesheet" href="./../../assets/css/dist/dialog.css">
+    <link rel="stylesheet" href="./../../assets/css/dist/mescroll.css">
+    <link rel="stylesheet" href="./../../assets/css/Secondary_page/exchange.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <div class="head">
+                <div class="head_top">
+                    <a class="backbtn" href="./../myself.html">
+                        <img src="./../../assets/images/btn/back.png">
+                    </a>
+                </div>
+
+            </div>
+            <div class="exchange_detail">
+                <div class="detail_title">
+                    <span class="title">兑换详情</span>
+                </div>
+                <div class="detail_cont">
+                    <div class="credits_top">
+                        <span class="history_credits">
+                            您的当前积分
+                            <span class="credits_numble">0 </span>&nbsp;个，可兑换成金币
+                            <span class="golds_numble">0</span>&nbsp;个。
+                        </span>
+                        <span class="rate">
+                            兑换比率：
+                            <span class="rate_numble">0 </span>&nbsp;
+                        </span>
+                    </div>
+                    <div class="credits_cont">
+                        <div class="input_box">
+                            我想兑换&nbsp; <input onpaste="return false" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                onafterpaste="this.value=this.value.replace(/\D/g,'')" pattern="[0-9]*" /> &nbsp;金币
+                                
+                        </div>
+                        <div class="credits_spend">
+                            <span class="spend_title">您将消耗</span>&nbsp;&nbsp;&nbsp;
+                            <span class="numble">0</span>&nbsp;&nbsp;&nbsp;
+                            <span class="spend_credits">积分</span>
+                        </div>
+                    </div>
+                    <div class="credits_footer">
+                        <button type="button">确认兑换</button>
+                    </div>
+                </div>
+            </div>
+            <div class="exchange_history">
+                <div class="history_title">历史兑换记录</div>
+                <div class="history_box" id="history_box">
+                    <ul class="mescroll" id="mescroll">
+                        <!-- <li>
+                            <span class="day">2019-03-04</span>
+                            <span class="time">10:34</span>
+                            <span class="credits">12321积分</span>
+                            <span class="golds">34金币</span>
+                        </li>
+                        <li>
+                            <span class="day">2019-03-04</span>
+                            <span class="time">10:34</span>
+                            <span class="credits">1321积分</span>
+                            <span class="golds">34金币</span>
+                        </li>
+                        <li>
+                            <span class="day">2019-03-04</span>
+                            <span class="time">10:34</span>
+                            <span class="credits">121积分</span>
+                            <span class="golds">34金币</span>
+                        </li>
+                        <li>
+                            <span class="day">2019-03-04</span>
+                            <span class="time">10:34</span>
+                            <span class="credits">121积分</span>
+                            <span class="golds">34金币</span>
+                        </li> -->
+                        
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="cover">
+
+            </div>
+            <div class="alertBox">
+                <div class="alertCont">
+                    <span>兑换成功！</span>
+                </div>
+                <div class="buttom">
+                    <span>确定</span>
+                </div>
+            </div> -->
+        </div>
+
+
+    </div>
+    <script type="text/javascript" src="./../../assets/js/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./../../assets/js/common/sizerem.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script type="text/javascript" src="./../../assets/js/dist/dialog.js"></script>
+    <script type="text/javascript" src="./../../assets/js/common/common.js"></script>
+    <script type="text/javascript" src="./../../assets/js/dist/mescroll.js"></script>
+    <script type="text/javascript" src="./../../assets/js/Secondary_page/exchange.js"></script>
+</body>
+
+</html>

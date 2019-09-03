@@ -1,0 +1,106 @@
+.main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.purchase_header {
+    height: 1rem;
+    background-color: #00a0e9;
+}
+
+.purchase_header .back {
+    position: relative;
+    top: -0.62rem;
+    margin-left: 0.5rem;
+}
+
+.purchase_header .title {
+    text-align: center;
+    line-height: 1rem;
+    font-size: 0.34rem;
+    color: #fff;
+}
+
+.purchase_container {
+    margin: 0 0.5rem;
+}
+
+/* 用户名 */
+.purchase_container .user {
+    font-size: 0.46rem;
+    color: #1a1a1a;
+    height: 1.42rem;
+    line-height: 1.42rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* 充值金额 */
+.purchase_container .mode .tip {
+    font-size: 0.3rem;
+    color: #1a1a1a;
+    height: 1.42rem;
+    line-height: 1.42rem;
+}
+
+.purchase_container .mode .bigBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.2rem;
+}
+
+.purchase_container .mode .box {
+    width: 45%;
+    border: 2px solid #019fe6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 1.4rem;
+    border-radius: 6px;
+}
+
+.purchase_container .mode .box.active {
+    background-color: #019fe6;
+}
+
+.purchase_container .mode .box.active p {
+    color: #fff !important;
+}
+
+.purchase_container .mode .box p:first-child {
+    font-size: 0.36rem;
+    color: #019fe6;
+}
+
+.purchase_container .mode .box p:last-child {
+    font-size: 0.3rem;
+    color: #019fe6;
+}
+
+.purchase_container .btn {
+    height: 1rem;
+    background-color: #019fe6;
+    margin: 0.8rem 0.36rem 0.26rem;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.3rem;
+}
+
+.purchase_container .tips{
+    margin: 0.2rem 0.36rem 0.26rem;
+    color: #262222;
+    font-size: 0.2rem;
+    line-height: 0.4rem;
+}
+
+.purchase_container .tips a{
+    font-size: 0.26rem;
+    color: #396eea;    
+    text-transform: uppercase;
+    margin: 0 0.08rem;
+}

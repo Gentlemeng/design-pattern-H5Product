@@ -1,0 +1,849 @@
+/* 线图 */
+.chart {
+    background-color: #2c2c3c;
+}
+
+.chart .header {
+    height: 1.2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.chart .header .title {
+    font-size: 0.36rem;
+    text-align: center;
+    line-height: 0.6rem;
+    color: #fff;
+    position: absolute;
+}
+
+.chart .header .follow {
+    background-position: center;
+    background-size: 100%;
+    width: 1.24rem;
+    height: 0.24rem;
+    background-repeat: no-repeat;
+    margin-right: 0.2rem;
+}
+
+.chart .old {
+    display: flex;
+    flex-direction: column;
+}
+
+.chart .old .tips {
+    height: 1.06rem;
+    overflow: hidden;
+    background-image: url(./../../images/forecast/bg.png);
+    background-position: unset;
+    text-align: center;
+    overflow: hidden;
+    background-repeat: repeat-x;
+    width: 100%;
+}
+
+.chart .old .tips div {
+    overflow-y: scroll;
+    padding: 0 0.4rem;
+    font-size: 12px;
+}
+.chart .old .tips img {
+  width: 100%;
+  height: 100%;
+}
+.chart .old .tips div p {
+    color: #fffc00;
+    padding: 0 0.16rem;
+    line-height: 22px !important;
+    text-align: justify;
+}
+
+.chart .old .tips div strong {
+    font-weight: 600;
+}
+
+@keyframes wordsLoop {
+    0% {
+        transform: translateY(0px);
+        -webkit-transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(-100%);
+        -webkit-transform: translateY(-100%);
+    }
+}
+
+@-webkit-keyframes wordsLoop {
+    0% {
+        transform: translateY(0px);
+        -webkit-transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(-100%);
+        -webkit-transform: translateY(-100%);
+    }
+}
+
+.chart .legend {
+    height: 0.5rem;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart .legend .flagImg {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #e6e6f2;
+}
+
+.chart .old .legend .history,
+.chart .old .legend .pre {
+    margin-right: 0.4rem;
+}
+
+.chart .old .legend .flagImg hr {
+    display: inline-block;
+    width: 0.4rem;
+    height: 0.02rem;
+    border: none;
+    margin-right: 0.2rem;
+}
+
+.chart .old .legend .history,
+.chart .old .legend .pre,
+.chart .old .legend .season {
+    display: none;
+}
+
+.chart .old .line_chart {
+    width: 7.5rem;
+    height: 4.6rem;
+    margin-bottom: 0.4rem;
+    position: relative;
+    padding: 0 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart .old .line_chart #data_chart {
+    width: 100%;
+    height: 4.6rem;
+    display: inline-block;
+    float: left;
+}
+
+.chart .old .tabSelect {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 0.3rem;
+    margin-top: 0.16rem;
+}
+
+.chart .old .tabSelect ul li {
+    float: left;
+}
+
+.chart .old .tabSelect ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 0.6rem;
+    font-size: 0.26rem;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+}
+
+.chart .old .tabs li a:hover,
+.chart .old .tabs li a.liactive {
+    color: #fffc00;
+    opacity: 1;
+    border-bottom: 2px solid #fffc00;
+}
+
+.chart .rate {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    padding: 0 0.4rem;
+}
+
+.chart .rate .contrast,
+.chart .rate .trend {
+    height: 0.74rem;
+    margin-bottom: 0.2rem;
+    margin-top: 0.2rem;
+    flex: 1;
+    margin-left: 0.4rem;
+    align-items: center;
+    display: none;
+    line-height: 0.74rem;
+}
+
+.chart .rate .contrast span,
+.chart .rate .trend span {
+    font-size: 0.26rem;
+    color: #a85f01;
+}
+
+.chart .rate p {
+    width: 2rem;
+    height: 0.74rem;
+    color: #fff;
+    line-height: 0.74rem;
+    text-align: center;
+    background-color: #a85f01;
+    font-size: 0.23rem;
+    margin-bottom: 0.2rem;
+    margin-top: 0.2rem;
+    display: none;
+}
+
+.chart .rate .value {
+    background-color: #fff;
+    color: #a85f01;
+    border: 2px solid #c9c9c9;
+    border-left: unset;
+    /* margin-right: 0.4rem; */
+}
+
+.comment,
+.opinion,
+.newOpinion,
+#publish,
+.high,
+.preResult,
+.highNew {
+    display: none;
+}
+
+.high .title,
+.comment .title,
+.opinion .title,
+.newOpinion .title,
+.preResult .title,
+.highNew .title {
+    font-size: 0.3rem;
+    color: #333;
+    line-height: 0.7rem;
+    margin-left: 0.3rem;
+}
+
+/* 预测结果 */
+.preResult .con,
+.highNew .con {
+    background-color: #fff;
+    padding: 0 0.3rem;
+}
+
+.preResult .table,
+.highNew .table {
+    background-color: #fff;
+    font-size: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preResult .table .table-box,
+.highNew .table .table-box {
+    height: 2rem;
+    border: 2px solid #cececf;
+    border-left: unset;
+}
+
+.preResult .table .table-box {
+    margin: 0.2rem 0;
+}
+
+.highNew .table .table-box {
+    border-bottom: transparent solid 0px;
+}
+
+.highNew .table:first-child .table-box {
+    margin-top: 0.2rem;
+}
+
+.highNew .table:last-child .table-box {
+    margin-bottom: 0.2rem;
+    border-bottom: #cececf solid 2px;
+}
+
+.highNew .table .table-box .text {
+    text-align: left;
+}
+
+.highNew .table .table-box .data {
+    font-size: 0.24rem;
+    color: #a85f01;
+    font-weight: bold;
+}
+
+.preResult .table .table-box:first-child,
+.highNew .table .table-box:first-child {
+    border-left: 2px solid #cececf;
+}
+
+.preResult .table .table-box .text,
+.highNew .table .table-box .text {
+    width: 100%;
+    height: 1.2rem;
+    font-size: 0.24rem;
+    color: #000;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #cececf;
+}
+
+.preResult .table .table-box .data,
+.highNew .table .table-box .data {
+    width: 100%;
+    height: 0.78rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preResult .table .table-box .data img {
+    width: 0.48rem;
+    height: 0.48rem;
+}
+
+.preResult .describe {
+    font-size: 0.24rem;
+    text-indent: 2em;
+    padding-bottom: 0.2rem;
+    color: #111;
+}
+
+/* 高频 */
+
+.high .table {
+    background-color: #fff;
+    font-size: 0;
+}
+
+.high .table .table-box {
+    width: 33.3333%;
+    height: 1.24rem;
+    border-right: 2px solid #d7d7d7;
+    float: left;
+}
+
+.high .table .table-box .text {
+    width: 100%;
+    height: 0.62rem;
+    background-color: #c5c7fe;
+    font-size: 0.24rem;
+    color: #333;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.high .table .table-box .data {
+    width: 100%;
+    height: 0.62rem;
+    text-align: center;
+    line-height: 0.62rem;
+    font-size: 0.24rem;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+.high .table .table-box .data a {
+    color: #e74354;
+}
+
+/* 专家评论 */
+.comment .content,
+.opinion .content,
+.newOpinion .content {
+    background-color: #fff;
+    padding: 0.1rem 0.3rem 0 0.3rem;
+    text-align: center;
+    height: auto;
+}
+
+.comment .content .article {
+    font-size: 0.26rem;
+    color: #333;
+    line-height: 0.42rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid #d2d2d2;
+    text-align: justify;
+    text-indent: 2em;
+}
+
+.comment .content a {
+    font-size: 0.24rem;
+    color: #555;
+    line-height: 0.76rem;
+}
+
+.comment .content .operate {
+    margin: 0 auto;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.comment .content .operate .btns {
+    width: 80%;
+    display: none;
+    margin: 0 auto;
+    margin-bottom: 0.2rem;
+}
+
+.comment .content .operate .btns .support,
+.comment .content .operate .btns .oppose {
+    width: 1.6rem;
+    height: 0.55rem;
+    display: inline-block;
+    border-radius: 10px;
+    color: #fff;
+    font-size: .24rem;
+    line-height: 0.55rem;
+}
+
+.comment .content .operate .btns .support {
+    background: -webkit-linear-gradient(to left, #f45454, #ff2222);
+    background: -o-linear-gradient(to left, #f45454, #ff2222);
+    background: -moz-linear-gradient(to left, #f45454, #ff2222);
+    background: linear-gradient(to left, #f45454, #ff2222);
+    float: left;
+}
+
+.comment .content .operate .btns .oppose {
+    background: -webkit-linear-gradient(to right, #14bb5b, #5feb7d);
+    background: -o-linear-gradient(to right, #14bb5b, #5feb7d);
+    background: -moz-linear-gradient(to right, #14bb5b, #5feb7d);
+    background: linear-gradient(to right, #14bb5b, #5feb7d);
+    float: right;
+}
+
+.comment .content .operate .result {
+    width: 100%;
+    display: none;
+}
+
+.comment .content .operate .result .tip {
+    font-size: 0.3rem;
+    line-height: 0.7rem;
+    color: #333;
+}
+
+.comment .content .operate .result .tip span {
+    color: #ff2222;
+    font-size: 0.36rem;
+}
+
+/* 精彩评论 */
+.opinion_ul li {
+    margin-top: 0.2rem;
+    border-bottom: 1px solid #cfcfcf;
+}
+
+.opinion_ul .user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.opinion_ul .user .tips {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.opinion_ul .user .tips .photo {
+    background-image: url(./../../images/header.png);
+    background-position: center;
+    background-size: contain;
+    width: 0.6rem;
+    height: 0.6rem;
+}
+
+.opinion_ul .user .tips .info {
+    margin-left: 0.2rem;
+    font-size: 0.24rem;
+    color: #333;
+}
+
+.opinion_ul .user .tips .info p {
+    width: 2.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.opinion_ul .user .tips .info p span {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 1.56rem;
+    margin-right: .1rem;
+}
+
+.opinion_ul .user .tips .info p img {
+    width: .68rem;
+    height: .28rem;
+}
+
+.opinion_ul .user .btns {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.opinion_ul .user .btns p {
+    font-size: 0.26rem;
+    color: #333;
+    text-align: left;
+}
+
+.opinion_ul .user .btns .supp {
+    color: #d51f07;
+}
+
+.opinion_ul .user .btns .support,
+.opinion_ul .user .btns .oppose {
+    background-position: center;
+    background-size: cover;
+    width: 0.36rem;
+    height: 0.36rem;
+    margin: 0 0.2rem;
+}
+
+.opinion_ul .user .btns .reply {
+    width: 1rem;
+    font-size: 0.18rem;
+    color: #096393;
+    height: 0.36rem;
+    line-height: 0.36rem;
+}
+
+.opinion_ul .replyli {
+    text-align: left;
+    font-size: 0.23rem;
+    color: #096393;
+    line-height: 0.38rem;
+    margin: 0.2rem 0;
+    width: 1.6rem;
+}
+
+.opinion_ul .content {
+    text-align: left;
+    font-size: 0.23rem;
+    color: #333;
+    line-height: 0.38rem;
+    margin: 0.2rem 0;
+}
+
+.container .publish {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 1rem;
+    width: 100%;
+    background: #fff;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+}
+
+.container .publish .send {
+    display: inline-block;
+    text-align: center;
+}
+
+#opinion_ul {
+    background-color: #fff;
+    padding: 0.1rem 0.3rem 0 0.3rem;
+    text-align: center;
+    display: none;
+}
+
+.mescroll-upwarp {
+    background-color: #fff;
+}
+
+.reply_content {
+    border: 1px solid #cfcfcf;
+    text-align: left;
+    padding: 0 .3rem .2rem .3rem;
+    margin-bottom: 0.3rem;
+    display: none;
+}
+
+.reply_content .reply_ul li {
+    border-bottom: 1px solid transparent;
+}
+
+.reply_content .reply_ul li span:nth-child(1) {
+    font-size: .26rem;
+    color: #6097c5;
+    margin-right: .1rem;
+}
+
+.reply_content .reply_ul li span:nth-child(1) span {
+    color: #555;
+    margin-left: .1rem;
+}
+
+.reply_content .reply_ul li span:nth-child(2) {
+    line-height: .38rem;
+    font-size: .23rem;
+    color: #333;
+}
+
+.reply_content .reply_ul li span:nth-child(3) {
+    float: right;
+    font-size: 0.18rem;
+    color: #096393;
+    height: 0.36rem;
+    line-height: 0.36rem;
+    width: 0.8rem;
+    text-align: right;
+}
+
+.comment .commentTips {
+    text-align: center;
+    background-color: #fff;
+    font-size: 0.24rem;
+    color: #555;
+    line-height: 0.76rem;
+}
+
+.mescroll-empty {
+    padding: 0.15rem 0;
+}
+
+/* 滚动文字弹框 */
+.tipBtn .dialog-content,
+.tipBtn .dialog-content-ft a:active {
+    background-color: transparent;
+}
+
+.tipBtn .dialog-content-hd,
+.tipBtn .dialog-content-bd {
+    background-color: #55729d;
+}
+
+.tipBtn .dialog-content-hd h4 {
+    font-size: 0.36rem;
+    color: #fff;
+}
+
+.tipBtn .dialog-content-bd {
+    padding: 0.15rem 0.2rem 0.15rem;
+}
+
+.tipBtn .dialog-content-bd p {
+    text-align: left;
+    font-size: 0.3rem;
+    color: #fff;
+    margin: 0.14rem 0rem;
+}
+
+.tipBtn .dialog-content-ft {
+    position: unset;
+    width: 0.7rem;
+    height: 0.7rem;
+    margin: 0 auto;
+    margin-top: 0.6rem;
+}
+
+.tipBtn .dialog-content-ft img {
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.tipBtn .dialog-content-ft:after {
+    border-top: unset;
+}
+
+/* 对比图 */
+.chart .new,
+.chart .newNew {
+    display: none;
+    background-color: #2c2c3c;
+}
+
+.chart .new .title,
+.chart .newNew .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0.5rem;
+    box-shadow: 0px 0.04rem 0.04rem #090909 inset;
+}
+
+.chart .new .title h4,
+.chart .newNew .title h4 {
+    color: #fff;
+    font-size: 0.2rem;
+    text-align: center;
+    flex: 1;
+    margin-left: 0.68rem;
+}
+
+.chart .new .title img,
+.chart .newNew .title img {
+    width: 0.28rem;
+    height: 0.3rem;
+    margin-right: 0.4rem;
+}
+
+.chart .new .legend {
+    width: 60%;
+}
+
+.chart .new .legend .flagImg .historyImg {
+    width: 2.6rem;
+}
+
+.chart .new .legend .flagImg .preImg {
+    width: 2.2rem;
+}
+
+.chart .new .legend .history .historyImg {
+    background: url(./../../images/forecast/historyNew.png) no-repeat;
+    background-position: left;
+    background-size: contain;
+}
+
+.chart .new .legend .pre .preImg {
+    background: url(./../../images/forecast/forecastNew.png) no-repeat;
+    background-position: left;
+    background-size: contain;
+}
+
+.chart .new .line_chart,
+.chart .newNew .line_chart {
+    margin-bottom: 0.12rem
+}
+
+.chart .new .line_chart #data_chart_new,
+.chart .newNew .line_chart #data_chart_newNew {
+    width: 7.5rem;
+    height: 5.62rem;
+}
+
+/* 支持反对图 */
+.comment .content .operate .result #result_chart {
+    width: 7.5rem;
+    height: 2rem;
+}
+
+.spot {
+    position: absolute;
+    display: none;
+    width: 0.2rem;
+    height: 0.2rem;
+}
+
+.spot img {
+    width: 0.2rem;
+    height: 0.2rem;
+    border-radius: 50%;
+}
+
+/* 查看原始数据 */
+.chart .old .original {
+    padding: 0 0.3rem;
+    margin-bottom: 0.4rem;
+    display: none;
+}
+
+.chart .old .original span {
+    padding: .06rem .18rem;
+    border-radius: 8px;
+    font-size: 0.24rem;
+    cursor: pointer;
+}
+
+.chart .old .original .show {
+    background-color: #ffd93f;
+    color: #2c2c3c;
+}
+
+.chart .old .original .hide {
+    color: #fff;
+    background-color: #4c4c5f;
+}
+
+/* 单位 */
+.chart .old .data_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: -0.3rem;
+}
+
+.chart .old .data_info .unit {
+    padding: 0 0.3rem;
+    color: #fefefe;
+    font-size: 0.18rem;
+    white-space: pre;
+}
+
+/* 高频模拟指数 */
+.chart .old .data_info .high_data {
+    border: 1px solid #fff;
+    display: none;
+    flex-direction: column;
+    width: fit-content;
+    padding: 0 0.2rem;
+    align-items: center;
+    margin-right: 0.3rem;
+    margin-bottom: 0.1rem;
+}
+
+.chart .old .data_info .high_data span {
+    color: #fff;
+    font-size: 0.18rem;
+}
+
+.chart .old .data_info .high_data .time {
+    margin-top: 0.08rem;
+}
+
+.chart .old .data_info .high_data .data {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.chart .old .data_info .high_data .data span {
+    font-size: 0.4rem;
+    padding-right: 0.1rem;
+}
+
+.chart .old .data_info .high_data .data img {
+    width: 0.3rem;
+    height: 0.3rem;
+}

@@ -1,0 +1,315 @@
+@font-face {
+    font-family: 'AlluraRegular';
+    src: url('./../../fonts/websymbols-regular-webfont.eot'),
+        url('./../../fonts/websymbols-regular-webfont?#iefix') format('embedded-opentype'),
+        url('./../../fonts/websymbols-regular-webfont.woff') format('woff'),
+        url('./../../fonts/websymbols-regular-webfont.ttf') format('truetype'),
+        url('./../../fonts/websymbols-regular-webfont.svg#AlluraRegular') format('svg');
+}
+header {
+    padding: 0 0.3rem 0 0.1rem;
+    height: 0.76rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    position: fixed;    
+    z-index: 10;
+}
+header .back{
+    color: #1db4eb
+}
+.unFollow{
+    background:url("./../../images/btn/unFollow_blue.png") no-repeat 0.1rem 0.02rem/0.28rem 0.28rem;
+    /* background-color:#ccc; */
+
+}
+.followed{
+    background:url("./../../images/btn/followed_blue.png") no-repeat 0.1rem 0.02rem/0.28rem 0.28rem;
+    /* background-color:#ccc; */
+
+}
+.follow_btn{
+    display:inline-flex;
+    align-items: center;
+    padding: 0 .1rem;
+    height: 0.36rem;
+    line-height: 0.36rem;
+    /* display: inline-block; */
+    color: #1db4eb;
+    font-size: 0.24rem;
+    text-align: center;
+    text-indent:0.32rem;
+}
+
+.content{
+    margin-top: 0.76rem; 
+    width: 100%; 
+}
+.master_wrap{
+    width: 100%;
+    height: 3.36rem;
+    padding: 0 0.3rem;
+    box-sizing: border-box;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.master_img{
+    width: 1.94rem;
+    height: 2.9rem;
+    border-radius: 0.1rem;
+    background: #a0a0a0;
+    margin-top: 0.14rem;
+    overflow: hidden;
+}
+.master_img img{
+    width: 1.94rem;
+    height: 2.9rem; 
+}
+.master_mes{
+    width: 4.3rem;
+    height: 100%;
+    padding-top: 0.14rem;
+    box-sizing: border-box;
+    padding-bottom: 0.32rem;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.master_name{
+    font-size: 0.36rem;
+    color: #000; 
+    line-height: 0.36rem;  
+}
+.master_duty{
+    margin-top: 0.10rem;
+}
+.master_duty li{
+    width: 100%;
+    overflow: hidden;
+}
+.master_duty li span{
+    color: #5cc7ee;
+    font-size: 0.22rem;
+    line-height: 0.30rem;
+    /* white-space: normal; */
+}
+.master_title{
+    margin-top: 0.30rem;
+
+}
+.master_title li span{
+    color: #111;
+    font-size: 0.22rem;
+    line-height: 0.30rem;
+}
+.information_wrap{
+    width: 100%;
+    height: auto;
+    padding: 0 0.3rem;
+    box-sizing: border-box;
+    background: #fff;
+    margin-top: 0.05rem;
+    overflow:hidden;
+}
+.expert_intro_icon{
+    width:0.18rem;
+    height:0.18rem;
+}
+.infor_title,.field_title{
+    width: 100%;
+    height: 0.44rem;
+    display: flex;
+    align-items: center;
+    margin-top: 0.1rem;
+}
+.infor_title span,.view_title span,.field_title span{
+    font-size: 0.28rem;
+    color: #1db4eb;
+    line-height: 0.24rem;
+    margin-left: 0.1rem;
+}
+.infor_conent,.research_conent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:0.1rem;
+}
+.infor_main,.research_main{
+    width: 100%;
+    margin-bottom:0.1rem;
+    font-size:0.24rem;
+}
+.informations{
+    position: relative;
+    padding-bottom: 0.1rem;
+}
+.text{
+    color: #111;
+    white-space: normal;
+    word-wrap: break-word;
+    margin-top: 0.08rem;
+    /* font-size: 24px;
+    line-height: 36px; */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 0.2rem;
+    
+}
+.text p{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.text span{
+    display: inline-block;
+}
+.text p, .text span, .text a{
+    /* line-height: 0.42rem; */
+}
+.text_co{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.box{
+   width: 100%;
+   text-align:center; 
+   height: 0.3rem;
+   margin-bottom: 0.1rem;
+}
+.on {
+    color: #111;
+    white-space: normal;
+    word-wrap: break-word;
+    margin-top: 0.08rem;
+    /* font-size: 24px;
+    line-height: 36px; */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 0.2rem;
+}
+.on p, .on span, .on a{
+    /* line-height: 0.42rem; */
+}
+.show{
+    min-width: 0.8rem;
+    height: 0.3rem;
+    color: #707070;
+    line-height: 0.3rem;
+    display:inline-flex;
+    align-items: center;
+    font-size: 0.2rem;
+    text-align: center;
+    text-indent:0.32rem;
+}
+
+.open{
+    background:url("./../../images/btn/down.png") no-repeat 0.1rem 0.06rem/0.18rem 0.18rem;
+}
+.open:after{
+    content: "展开"
+}
+.close{
+    background:url("./../../images/btn/up.png") no-repeat 0.1rem 0.06rem/0.18rem 0.18rem; 
+}
+.close:after{
+    content: "收起"
+}
+.field{
+    position: relative;
+    padding-bottom: 0.1rem;
+}
+.field_wrap{
+    width: 100%;
+    height: auto;
+    padding: 0 0.3rem;
+    box-sizing: border-box;
+    background: #fff;
+    margin-top: 0.05rem;
+    overflow: hidden;
+}
+
+.view_wrap{
+    width: 100%;
+    height: auto;
+    background: #fff;
+    margin-top: 0.05rem;
+}
+.view_title{
+    width: 100%;
+    height: 0.62rem;
+    display: flex;
+    align-items: center;
+    padding: 0 0.3rem;
+    box-sizing: border-box;
+}
+.view ul li{
+    width: 100%;
+    height: auto;
+    border-bottom: 0.01rem solid #d7d7d7;
+    padding-top: 0.2rem;
+    box-sizing: border-box;
+}
+.view ul li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 0.3rem;
+    box-sizing: border-box;
+}
+.view_cont{
+    font-size: 0.28rem;
+    color: #111;
+    line-height: 0.36rem;
+    white-space: normal;
+    word-wrap: break-word;
+    margin-bottom: 0.1rem;
+}
+.auti{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.view_name{
+    font-size: 0.24rem;
+    color: #9b9b9b;
+    display: block;
+    line-height: 0.36rem;
+}
+.view_time{
+    font-size: 0.24rem;
+    color: #9b9b9b;
+    display: block;
+    line-height: 0.36rem;
+
+}
+.view ul li:nth-child(1){
+    padding-top: 0;
+}
+.nomore{
+    width: 100%;
+    height: 0.30rem;
+    font-size: 0.26rem;
+    line-height: 0.3rem;
+    text-align: center;
+    margin-bottom: 0.3rem;
+    color: #888;
+}
+.text_show{
+    height:auto;
+}
+.text_hide{
+    max-height:1.26rem;
+}

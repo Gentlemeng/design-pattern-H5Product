@@ -1,0 +1,192 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+}
+
+.header .back {
+    margin-top: 0.2rem;
+    background-image: url(./../../images/btn/back_bg.png);
+}
+
+.article {
+    background-color: #fff;
+    padding: 0 0.3rem;
+}
+
+/* 用户信息 */
+.article .info {
+    height: 1.34rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.article .info .user {
+    height: 0.84rem;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.article .info .user .photo {
+    background-image: url(./../../images/header.png);
+    border-radius: 50%;
+    height: 0.84rem;
+    width: 0.84rem;
+    background-position: center;    
+    background-size: 100% 100%;
+}
+
+.article .info .user .col {
+    display: inline-block;
+    float: left;
+    margin-left: 0.2rem;
+    font-size: 0.24rem;
+    color: #555;
+}
+.article .infoTitle{
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.3rem;
+    margin-bottom: 0.2rem;
+}
+/* 评论内容 */
+.article .content {
+    font-size: 0.3rem;
+    text-align: justify;
+}
+.article .label {
+    margin: 0.2rem 0 0.3rem 0;
+}
+
+.article .label a {
+    font-size: 0.3rem;
+    color: #45587c;
+}
+.article strong {
+    font-weight: bold;
+}
+/* 支持or反对 */
+.article .operate {
+    margin: 0 auto;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.article .operate .btns {
+    width: 80%;
+    display: none;
+    margin: 0 auto;
+    margin-bottom: .2rem;
+}
+
+.article .operate .btns .support,
+.article .operate .btns .oppose {
+    width: 1.6rem;
+    height: 0.55rem;
+    display: inline-block;
+    border-radius: 10px;
+    color: #fff;
+    font-size: .24rem;
+    line-height: 0.55rem;
+    text-align: center;
+}
+
+.article .operate .btns .support {
+    background: -webkit-linear-gradient(to left, #f45454, #ff2222);
+    background: -o-linear-gradient(to left, #f45454, #ff2222);
+    background: -moz-linear-gradient(to left, #f45454, #ff2222);
+    background: linear-gradient(to left, #f45454, #ff2222);
+    float: left;
+}
+
+.article .operate .btns .oppose {
+    background: -webkit-linear-gradient(to right, #14bb5b, #5feb7d);
+    background: -o-linear-gradient(to right, #14bb5b, #5feb7d);
+    background: -moz-linear-gradient(to right, #14bb5b, #5feb7d);
+    background: linear-gradient(to right, #14bb5b, #5feb7d);
+    float: right;
+}
+
+.article .operate .result {
+    width: 100%;
+    display: none;
+}
+
+.article .operate .result .tip {
+    font-size: 0.3rem;
+    line-height: 0.7rem;
+    color: #333;
+    text-align: center;
+}
+
+.article .operate .result .tip span {
+    color: #ff2222;
+    font-size: 0.36rem;
+}
+
+/* 更多专家 */
+.more .title {
+    font-size: 0.24rem;
+    color: #555;
+    line-height: 0.7rem;
+    padding: 0 0.3rem;
+}
+
+.more .list {
+    background-color: #FFF;
+    padding: 0 0.3rem;
+}
+
+#list_ul li {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.list_ul {
+    padding: 0 0.3rem;
+    background-color: #fff;
+}
+
+.list_ul .essay {
+    padding: 0.2rem 0 0.2rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.list_ul .essay .content {
+    font-size: 0.3rem;
+    color: #000;
+    margin-bottom: 0.2rem;
+}
+
+.list_ul .essay .time {
+    font-size: 0.24rem;
+    color: #555;
+    display: inline-block;
+}
+
+.list_ul .essay .detail {
+    font-size: 0.3rem;
+    color: #000;
+}
+
+/*  */
+.content p img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.mescroll-empty {
+    padding: 0.15rem 0;
+}
+
+.operate .result #result_chart {
+    width: 7.5rem;
+    height: 2rem;
+}
+
+.mescroll-upwarp {
+    background-color: #fff;
+}

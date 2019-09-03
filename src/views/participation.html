@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no,telephone=no" />
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title></title>
+    <script>
+        if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent))) {
+            window.location.href = "http://www.tjresearch.cn";
+        }
+        function token() {
+            var time = 1000 * 60 * 15;
+            var sessionData = sessionStorage.getItem("Authentication");
+            if (sessionData == null || JSON.parse(sessionData).data == undefined) {
+                if (window.location.href.split("token=").length == 1) {
+                    sessionStorage.removeItem("Authentication");
+                } else {
+                    sessionStorage.removeItem("Authentication");
+                    sessionStorage.setItem("Authentication", JSON.stringify({
+                        data: parseURL(window.location.href).token,
+                        time: new Date().getTime()
+                    }));
+                    window.location.href = getUrlParam(window.location.href);
+                }
+            } else if (new Date().getTime() - JSON.parse(sessionData).time > time) {
+                sessionStorage.removeItem("Authentication");
+                sessionStorage.setItem("Authentication", JSON.stringify({
+                    data: parseURL(window.location.href).token,
+                    time: new Date().getTime()
+                }));
+                window.location.href = getUrlParam(window.location.href);
+            }
+        }
+        //获取url中的参数
+        function parseURL(url) {
+            var urlCopy = url.replace(/\&amp;/g, "&").split("?")[1];
+            var res = {};
+            if (urlCopy) {
+                var para = urlCopy.split("&");
+                var len = para.length;
+                var arr = [];
+                for (var i = 0; i < len; i++) {
+                    arr = para[i].split("=");
+                    res[arr[0]] = decodeURI(decodeURI(arr[1]))
+                }
+            }
+            return res;
+        };
+        // 切token
+        function getUrlParam(param) {
+            var aa = parseURL(param),
+                url = param.split("?")[0],
+                paramString = "?";
+            delete aa.token;
+            if (Object.keys(aa) == 1) {
+                Object.keys(aa).forEach(function (v) {
+                    paramString = paramString + v + "=" + aa[v];
+                })
+            } else {
+                for (var i = 0; i < Object.keys(aa).length; i++) {
+                    if (i == Object.keys(aa).length - 1) {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]];
+                    } else {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]] + "&";
+                    }
+                }
+            }
+            if (paramString != "?") {
+                url += paramString;
+            }
+            return url;
+        }
+        token();   
+    </script>
+    <!-- 公用css -->
+    <link rel="stylesheet" href="./../assets/css/common/reset.css">
+    <link rel="stylesheet" href="./../assets/css/common/base.css">
+    <link rel="stylesheet" href="./../assets/css/dist/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="./../assets/css/dist/dialog.css">
+    <link rel="stylesheet" href="./../assets/css/dist/mescroll.css">
+    <link rel="stylesheet" href="./../assets/css/participation.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <div class="scroller partici_scroll">
+                <div class="participation">
+                    <div class="swiper-container partici_swiper">
+                        <div class="my-pagination partici_tab">
+                            <ul class="my-pagination-ul partici_tab_ul">
+                                <!-- <li class="swiper-pagination-bullet">总量</li> -->
+                            </ul>
+                        </div>
+                        <div class="swiper-wrapper partici_swiper_wrapper swiper-no-swiping">
+                            <div class="swiper-slide guess_slide">
+                                <div class="guess_slide_scroll">
+                                    <div class="guess">
+                                        <h2 class="guess_title"></h2>
+                                        <div class="guess_rule_wrap clear">
+                                            <div class="rule_btn guess_rule_btn right">规 则</div>
+                                        </div>
+                                        <div class="guess_main">
+                                            <div class="swiper-container guess_swiper">
+                                                <div class="guess_tab_option">
+                                                    <p>竞猜指标:</p>
+                                                    <div class="guess_index_selected">
+                                                        <div class="index_selected_text"></div>
+                                                        <div class="my-pagination guess_tab">
+                                                            <ul class="my-pagination-ul guess_tab_ul"></ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-wrapper guess_chart_wrap">
+                                                    <!-- <div class="swiper-slide guess_chart_slide">
+                                                        <div class="guess_chart_top">
+                                                            <span class="use_tip">滑动标点拖拽进行预测</span>
+                                                            <div class="guess_chart">
+                                                                <canvas id="chart" class="canvas"></canvas>
+                                                            </div>
+                                                        </div>
+                                                        <div class="guess_chart_bottom">
+                                                            <div class="guess_btn clear">
+                                                                <section class="preview_btn">
+                                                                    <button class="preview"></button>
+                                                                </section>
+                                                                <section class="submit_btn">
+                                                                    <button class="submit"></button>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="partici_rule guess_rule">
+                                            <p class="rule">
+                                                活动规则
+                                            </p>
+                                            <ol class="rule_info">
+                                            </ol>
+                                        </div> -->
+                                        <!-- <div class="no_partici_data">暂无活动可参与</div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide viewpoint_slide">
+                                <div class="viewpoint_slide_scroll">
+                                    <div id="viewPoint" class="viewpoint mescroll">
+                                        <div class="view_main">
+                                            <h2 class="view_title"></h2>
+                                            <div class="guess_rule_wrap clear">
+                                                <div class="rule_btn view_rule_btn right">规 则</div>
+                                            </div>
+                                            <div class="view_history">
+                                                <a href="./pages/view_list.html">查看往期观点>></a>
+                                            </div>
+                                            <div class="expert_view_wrap">
+                                                <h3 class="view_current">本期观点</h3>
+                                                <div class="expert_view_txt justify"></div>
+                                            </div>
+                                            <div class="essay_handle_wrap">
+                                                <div class="essay_handle">
+                                                    <div class="support">
+                                                        <button class="opinion_btn support_btn">支持</button>
+                                                    </div>
+                                                    <div class="neutral">
+                                                        <button class="opinion_btn neutral_btn">中立</button>
+                                                    </div>
+                                                    <div class="oppose">
+                                                        <button class="opinion_btn oppose_btn">反对</button>
+                                                    </div>
+                                                </div>
+                                                <div class="essay_opinion">
+                                                    <div class="opinion_detail">
+                                                        <div class="support_detail">
+                                                            支持：<span class="support_percent"></span>
+                                                        </div>
+                                                        <div class="neutral_detail">
+                                                            中立：<span class="neutral_percent"></span>
+                                                        </div>
+                                                        <div class="oppose_detail">
+                                                            反对：<span class="oppose_percent"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="opinion_bar">
+                                                        <div class="support_bar"></div>
+                                                        <div class="neutral_bar"></div>
+                                                        <div class="oppose_bar"></div>
+                                                    </div>
+                                                    <!-- <div class=""></div> -->
+                                                    <div class="my_opinion">
+                                                        你已经选择<span class="opinion_txt">支持</span>,恭喜您投票成功。
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="partici_rule viewpoint_rule">
+                                                <p class="rule">
+                                                    活动规则
+                                                </p>
+                                                <ol class="rule_info">
+                                                </ol>
+                                            </div> -->
+                                        </div>
+                                        <div class="view_comment"></div>
+                                        <ul id="answerUl" class="answer_ul">
+                                            <!-- <li class="answer_list">
+                                                <div class="answer_user">
+                                                    <span class="user_avatar"></span>
+                                                    <span class="user_name">admin</span>
+                                                </div>
+                                                <div class="answer_con">
+                                                    <p class="answer_txt">非常同意</p>
+                                                </div>
+                                                <div class="answer_handle">
+                                                    <div class="answer_attitude" parent_id="${list.fCommentId}">
+                                                        <span class="hand like"></span>
+                                                        <i class="like_num">123</i>
+                                                        <span class="hand dislike"></span>
+                                                        <i class="dislike_num">456</i>
+                                                    </div>
+                                                </div>
+                                            </li> -->
+                                        </ul>
+                                        <p class="no_sign_in">登录后查看留言</p>
+                                    </div>
+                                </div>
+                                <footer class="publish">
+                                    <textarea id="txt" placeholder="发表观点"></textarea>
+                                    <!-- <input type="text" id="txt" placeholder="发表观点" /> -->
+                                    <p class="send">发送</p>
+                                </footer>
+                            </div>
+                            <div class="swiper-slide question_slide">
+                                <div class="question_slide_scroll">
+                                    <section class="ask_question_wrap">
+                                        <!-- 提问输入框 -->
+                                        <div class="ask_question_body">
+                                            <div class="ask_question">
+                                                <input type="text" class="question_field" placeholder="我要提问" />
+                                                <button class="question_submit">提问</button>
+                                            </div>
+                                        </div>
+                                        <!-- 提问分类title -->
+                                        <div class="question_tab_wrap">
+                                            <div class="question_tab_body">
+                                                
+                                                <div class="question_tab_top">
+                                                        <div class="question_rule_wrap">
+                                                                <div class="rule_btn question_rule_btn">规 则</div>
+                                                            </div>
+                                                    <span class="question_tab_title">
+                                                        <span class="question_tab_active"></span>
+                                                        <i class="arrow_icon arrow_up"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 提问分类列表和layer -->
+                                        <div class="question_tab_main">
+                                            <ul class="question_tab_ul"> 
+                                                <li class="question_tab_list" question_category="hot">人气排名</li>
+                                                <li class="question_tab_list" question_category="new">最新提问</li>
+                                                <li class="question_tab_list" question_category="oneself">我的提问</li>
+                                            </ul>
+                                            <div class="question_tab_layer"></div>
+                                        </div>
+                                    </section>
+                                    <!-- 提问列表 -->
+                                    <section class="question_wrap">
+                                        <div class="question question_hot">
+                                            <section id="questionListWrap" class="mescroll question_list_wrap">
+                                                <ul id="questionListUl" class="question_list_ul">
+                                                    <!-- <li class="question_list" question_id="${list.fInfoId}">
+                                                                <div class="question_top clear">
+                                                                    <p class="question_title left justify col_3_hide" style="${widthStr}">${list.fTitle}</p>
+                                                                    <img class="question_img right" src="${list.ques_img}" style="${display}"/>
+                                                                </div>
+                                                                <div class="question_bottom clear">
+                                                                    <div class="question_handle left clear">
+                                                                        <button class="go_to_answer left">回答</button>
+                                                                        <div class="question_attitude clear">
+                                                                            <span class="hand like left"></span>
+                                                                            <i class="like_num left">${list.support}</i>
+                                                                            <span class="hand dislike left"></span>
+                                                                            <i class="dislike_num left">${list.against}</i>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="question_reply right">
+                                                                        <em class="reply_num">${list.count}</em>
+                                                                        <span class="reply_text">个回答</span>
+                                                                    </div>
+                                                                </div>
+                                                            </li> -->
+                                                </ul>
+                                            </section>
+                                        </div>
+                                    </section>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <span class="hand like left"></span>
+        <span class="hand dislike left"></span> -->
+        <footer class="footer">
+            <a href="./forecast.html">
+                <em class="tab_forecast"></em>
+                <span>预测</span>
+            </a>
+            <a href="./participation.html" class="activehome">
+                <em class="tab_participation"></em>
+                <span>参与</span>
+            </a>
+            <a href="./expert.html">
+                <em class="tab_expert"></em>
+                <span>专家</span>
+            </a>
+            <a href="./information.html">
+                <em class="tab_information"></em>
+                <span>资讯</span>
+            </a>
+            <a href="./myself.html">
+                <em class="tab_myself"></em>
+                <span>我的</span>
+            </a>
+        </footer>
+        <div class="rule_layer_wrap">
+            <div class="rule_info_wrap">
+                <p class="rule_title">活动规则</p>
+                <div class="rule_info_con">
+                    <ol class="rule_info"></ol>
+                </div>
+            </div>
+            <div class="rule_close"></div>
+        </div>
+    </div>
+    <!--移动端适配-->
+    <script type="text/javascript" src="./../assets/js/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/dist/echarts.simple.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/common/sizerem.js"></script>
+    <script type="text/javascript" src="./../assets/js/dist/mescroll.js"></script>
+    <script type="text/javascript" src="./../assets/js/dist/dialog.js"></script>
+    <script type="text/javascript" src="./../assets/js/dist/swiper-3.4.2.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script type="text/javascript" src="./../assets/js/common/common.js"></script>
+    <!-- 拖拽类 -->
+    <script type="text/javascript" src="./../assets/js/common/dragCanvas.js"></script>
+    <script type="text/javascript" src="./../assets/js/participation.js"></script>
+</body>
+
+</html>

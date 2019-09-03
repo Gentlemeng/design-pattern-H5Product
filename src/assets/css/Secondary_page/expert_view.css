@@ -1,0 +1,348 @@
+@font-face {
+    font-family: 'AlluraRegular';
+    src: url('./../../fonts/websymbols-regular-webfont.eot'),
+        url('./../../fonts/websymbols-regular-webfont?#iefix') format('embedded-opentype'),
+        url('./../../fonts/websymbols-regular-webfont.woff') format('woff'),
+        url('./../../fonts/websymbols-regular-webfont.ttf') format('truetype'),
+        url('./../../fonts/websymbols-regular-webfont.svg#AlluraRegular') format('svg');
+}
+.main{
+    overflow-y:scroll;
+}
+.essay_detail{
+    background-color:#fff;
+    padding:0 0.3rem;
+    overflow: hidden;
+}
+.essay_detail strong{
+    font-weight: 700;
+}
+/* 文章标题 */
+.essay_title{
+    word-break: break-all;
+    margin:0.4rem 0;
+    font-size:0.46rem;
+    font-weight: bold;
+    color:#000;
+    line-height:0.66rem;
+}
+.essay_introduce{
+    /* display: flex; */
+    /* display:-webkit-flex; */
+    /* justify-content:space-between; */
+    margin-bottom:1.06rem;
+    font-size:0.26rem;
+    line-height:0.34rem;
+}
+/* 资讯收藏 */
+.follow_wrap{
+    text-align:right;
+    margin-bottom:0.4rem;
+}
+.follow_btn{
+    display:inline-flex;
+    align-items: center;
+    padding: 0 .1rem;
+    height: 0.36rem;
+    line-height: 0.36rem;
+    /* display: inline-block; */
+    color: #1db4eb;
+    font-size: 0.24rem;
+    text-align: center;
+    text-indent:0.32rem;
+}
+.unFollow{
+    background:url("./../../images/btn/unFollow_blue.png") no-repeat 0.1rem 0.02rem/0.28rem 0.28rem;
+    /* background-color:#ccc; */
+
+}
+.followed{
+    background:url("./../../images/btn/followed_blue.png") no-repeat 0.1rem 0.02rem/0.28rem 0.28rem;
+    /* background-color:#ccc; */
+
+}
+/* 文章作者相关 */
+.essay_author{
+}
+.author_txt{
+
+}
+.essay_auth{
+    margin-right:0.14rem;
+}
+.essay_publish_time{
+    color:#999999;
+}
+/* 文章字数 */
+.essay_length{
+    margin-top: 0.2rem;
+}
+.num_txt{
+
+}
+.essay_num{
+    margin-right:0.14rem;
+}
+.need_txt{
+
+}
+.essay_need{
+
+}
+/* 文章摘要 */
+.essay_summary{
+    padding:0 0.24rem;
+    margin-bottom:0.86rem;
+    font-size:0.32rem;
+    line-height:0.56rem;
+    color:#999;
+}
+.essay_text{
+    /* text-indent: 2em; */
+    margin-bottom: 0.3rem;
+    font-size:0.32rem;
+    line-height: 0.6rem;
+    overflow: hidden;
+}
+.essay_text p img{
+    width:100%;
+}
+/* 详情页星星样式 start*/
+.essay_info_star{
+    padding-top:0.24rem;
+    border-top:1px solid #a0a0a0;
+    overflow: hidden;
+}
+.essay_info_star .star_wrap{
+    width:4.12rem;
+    justify-content:space-between;
+    margin-bottom:0;
+}
+.star_wrap{
+    width:4.12rem;
+}
+.star_ul .star{
+    width:0.28rem;
+    height:0.4rem;
+    text-align: center;
+    font-size: 0.26rem;
+    line-height: 0.4rem;
+}
+.star_ul .star{}
+.my_star,.other_star{
+    display:flex;
+    align-items: center;
+    color:#000;
+    margin-bottom: 0.4rem
+}
+.star_title{
+    font-size:0.28rem;
+}
+.other_star .star_ul .star:before{
+    position: absolute;
+    display: block;
+    width: 50%;
+    height:100%;
+    content: attr(data-content);
+    overflow: hidden;
+    color:var(--half-star-color);
+    font-size: 0.26rem;
+} 
+.other_star .star_ul .left_half_star{
+    text-align:right;
+}
+.other_star .star_ul .right_half_star{
+    text-align: left;
+}
+.other_star .star_ul .left_half_star:before{
+    text-align:right;
+    right:0;
+    top:0;
+    -moz-transform:rotateY(180deg);
+    -webkit-transform:rotateY(180deg);
+    -o-transform:rotateY(180deg);
+    transform:rotateY(180deg);
+}
+.other_star .star_ul .right_half_star:before{
+    text-align: left;
+    left: 0;
+    top: 0;
+}
+.star_close{
+    background: url(./../../images/btn/rule_close.png) no-repeat center/cover;
+}
+/* 详情页星星样式 end*/
+/* 上一篇、下一篇 start*/
+.switch_essay{
+    overflow: hidden;
+    padding: 0.2rem 0.3rem 0 0.3rem;
+    background-color: #fff;
+}
+.switch_essay_list{
+    line-height: 0.4rem;
+    margin-bottom: 0.2rem
+}
+.switch_essay_list a{
+    display:flex;
+    align-items: flex-start;
+    font-size:0.24rem;
+    color:#1852e5;
+}
+.switch_essay_list .switch_info{
+    
+}
+.switch_essay_list .switch_essay_title{
+    flex:1;
+}
+/* 上一篇、下一篇 end*/
+
+/*自定义 文章支持与反对 start*/
+/* .essay_handle_wrap{
+    background-color:#fff;
+}
+.essay_handle{  
+    justify-content: space-around;
+    margin-bottom:1.4rem;
+}
+.essay_opinion{
+    margin-bottom:0.2rem;
+}
+.support_percent, .oppose_percent, .neutral_percent {
+    color: #000;
+}
+.my_opinion {
+    color:#000;
+} */
+/*自定义 文章支持与反对 end*/
+/* 文章评论 */
+.wonderful_txt,.latest_txt{
+    padding:0 0.3rem;
+    height:0.46rem;
+    line-height:0.46rem;
+    color:#000;
+    font-size:0.24rem;
+}
+.wonderful_comment_ul,.latest_comment_ul{
+    /* background-color:#fff;
+    padding:0 0.3rem; */
+    overflow: hidden;
+}
+.wonderful_comment_ul .mescroll-empty,.latest_comment_ul .mescroll-empty{
+    padding-bottom:0.3rem;
+}
+
+
+.comment_handle{
+    display:flex;
+    justify-content:flex-end;
+}
+.comment_attitude{
+    display:flex;
+    justify-content:flex-end;
+    max-width: 4rem;
+    height:0.8rem;
+    color:#979797;
+    font-size:0;
+}
+.comment_handle .hand{
+    display: block;
+    width:0.3rem;
+    height:0.3rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin:0.24rem 0 0 0.2rem;
+}
+.comment_handle .like{
+    background-image: url("./../../images/btn/support.png")
+}
+.comment_handle .like_active{
+    background-image: url("./../../images/btn/support_ed.png")
+}
+.like_num,.dislike_num,.comment_num{
+    display: block;
+    height:0.3rem;
+    margin : 0.24rem 0 0 0.1rem;
+    font-size:0.28rem;
+}
+.comment_handle .dislike{
+    background-image: url("./../../images/btn/oppose.png")    
+}
+.comment_handle .dislike_active{
+    background-image: url("./../../images/btn/oppose_ed.png")    
+}
+.reply_comment{
+    margin-left:0.2rem;
+    font-size:0.3rem;
+    height:0.8rem;
+    line-height:0.8rem;
+    color:#395f95;
+
+}
+.comment_num{
+    margin-left:0.1rem;
+}
+.comment_con{
+    /* padding:0 0.3rem; */
+    margin:0.14rem 0;
+}
+.comment_con .comment_txt{
+    font-size:0.3rem;
+    line-height:0.5rem;
+}
+
+/* 中间问题回答的回复 */
+.comment_response{
+    display:none;
+    /* padding:0 .3rem; */
+}
+.comment_response_ul{
+    /* height:150px; */
+}
+.comment_response_list{
+    position: relative;
+    font-size:0.24rem;
+    line-height: .4rem
+}
+.comment_response_list .act_response{
+    color:#395f95;
+}
+.comment_response_list .response_txt{
+    margin:0 0.1rem;
+}
+.comment_response_list .unact_response{
+    color:#395f95;
+}
+.comment_response_list .response_info{
+    max-width: 6rem;
+    display: inline-block;
+    word-break: break-all;
+}
+.comment_response_list .response_btn{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    width: 0.7rem;
+    color: #395f95;
+}
+/* 无数据样式 */
+.no_data{
+    height:0.96rem;
+    line-height:0.96rem;
+    text-align: center;
+    color:gray;
+}
+.replyBox{
+    display: inline-flex;
+    align-items: center;
+    height: 0.40rem;
+}
+.replaytext{
+    font-size: 0.24rem;
+    color:#406599;
+    line-height: 0.4rem;
+}
+
+
+
+

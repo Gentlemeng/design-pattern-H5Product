@@ -1,0 +1,130 @@
+.main{
+    display:flex;
+    flex-direction: column;
+}
+.back_wrap{
+    justify-content: space-between;
+    padding-right:0.24rem;
+    background-color:#1d2143;
+    height:1rem;
+    color:#fff;
+}
+.back_wrap .back{
+    background:url("./../../images/btn/back.png") no-repeat center/contain;
+}
+.energy_title_wrap{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 3.2rem;
+    height:100%;
+}
+.energy_title{
+    min-width: 2rem;
+    font-size:0.36rem;
+    text-indent: 0.48rem;
+    background:url("./../../images/energy/energy_icon.png") no-repeat left center/0.34rem 0.34rem;
+}
+.energy_price{
+    font-size:0.24rem;
+    color:#f9ff53;
+}
+.title_info{
+    min-width: 1rem;
+    text-indent: 0.24rem;
+    font-size:0.20rem;
+    background:url("./../../images/forecast/explain.png") no-repeat left center/0.18rem 0.18rem;
+}
+.energy_box{
+    display: flex;
+    flex:1;
+    padding:0.1rem 0.3rem 0;
+}
+.energy_box ul{
+    flex:1;
+}
+.energy_demand{
+    margin-right:0.1rem;
+}
+.energy_demand .energy_box_list{
+    background-color:#2582ea;
+}
+.energy_supply .energy_box_list{
+    background-color:#3f576f;
+}
+.energy_box_list{
+    position: relative;
+    margin-bottom:0.2rem;
+    padding:0.1rem 0.3rem 0.32rem;
+    font-size:0.24rem;
+    border-radius: 0.2rem;
+    box-shadow: 0px 12px 10px -10px #414141;
+}
+.no_sign_in_layer{
+    /* display:flex; */
+    display:none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border-radius: 0.2rem;
+}
+.no_sign_in_layer span{
+    height: 0.36rem;
+    line-height: 0.36rem;
+    text-indent: 0.56rem;
+    color:#fff;
+    background: url("./../../images/forecast/lock.png") no-repeat left center/0.36rem 0.36rem;
+}
+.energy_demand .no_sign_in_layer{
+    background: radial-gradient(rgb(37, 130, 234) 60%, rgba(37, 130, 234,0.6));
+}
+.energy_supply .no_sign_in_layer{
+    background: radial-gradient(rgb(63, 87, 111) 60%, rgba(63, 87, 111, 0.6));
+}
+.energy_info_link{
+    display: block;
+    color:#fff;
+}
+.energy_list_title{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    height:0.28rem;
+    margin-bottom:0.36rem;
+}
+.energy_industry_list{
+    height:0.48rem;
+    line-height: 0.24rem;
+    margin-bottom: 0.2rem;
+}
+.energy_industry_list img{
+    width:0.26rem;
+    height:0.26rem;
+    vertical-align: middle;
+}
+.energy_industry_list b{
+    padding-left: 0.52rem;
+    display: inline-block;
+}
+.energy_industry_list:nth-child(1){
+    color:#ff8e82;
+    background:url("./../../images/energy/energy_industry_01.png") no-repeat left top/0.26rem 0.26rem;
+}
+.energy_industry_list:nth-child(2){
+    color:#ffc9a1;
+    background:url("./../../images/energy/energy_industry_02.png") no-repeat left top/0.26rem 0.26rem;
+}
+.energy_industry_list:nth-child(3){
+    color:#ffecb9;
+    background:url("./../../images/energy/energy_industry_03.png") no-repeat left top/0.26rem 0.26rem;
+}
+.energy_industry_list:nth-child(4){
+    background:url("./../../images/energy/energy_industry_04.png") no-repeat left top/0.22rem 0.22rem;
+}
+.energy_industry_list:nth-child(5){
+    background:url("./../../images/energy/energy_industry_05.png") no-repeat left top/0.22rem 0.22rem;
+}

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no,telephone=no" />
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title></title>
+    <script>
+        if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent))) {
+            window.location.href = "http://www.tjresearch.cn";
+        }
+
+        function token() {
+            var time = 1000 * 60 * 15;
+            var sessionData = sessionStorage.getItem("Authentication");
+            if (sessionData == null || JSON.parse(sessionData).data == undefined) {
+                if (window.location.href.split("token=").length == 1) {
+                    sessionStorage.removeItem("Authentication");
+                } else {
+                    sessionStorage.removeItem("Authentication");
+                    sessionStorage.setItem("Authentication", JSON.stringify({
+                        data: parseURL(window.location.href).token,
+                        time: new Date().getTime()
+                    }));
+                    window.location.href = getUrlParam(window.location.href);
+                }
+            } else if (new Date().getTime() - JSON.parse(sessionData).time > time) {
+                sessionStorage.removeItem("Authentication");
+                sessionStorage.setItem("Authentication", JSON.stringify({
+                    data: parseURL(window.location.href).token,
+                    time: new Date().getTime()
+                }));
+                window.location.href = getUrlParam(window.location.href);
+            }
+        }
+        //获取url中的参数
+        function parseURL(url) {
+            var urlCopy = url.replace(/\&amp;/g, "&").split("?")[1];
+            var res = {};
+            if (urlCopy) {
+                var para = urlCopy.split("&");
+                var len = para.length;
+                var arr = [];
+                for (var i = 0; i < len; i++) {
+                    arr = para[i].split("=");
+                    res[arr[0]] = decodeURI(decodeURI(arr[1]))
+                }
+            }
+            return res;
+        };
+        // 切token
+        function getUrlParam(param) {
+            var aa = parseURL(param),
+                url = param.split("?")[0],
+                paramString = "?";
+            delete aa.token;
+            if (Object.keys(aa) == 1) {
+                Object.keys(aa).forEach(function (v) {
+                    paramString = paramString + v + "=" + aa[v];
+                })
+            } else {
+                for (var i = 0; i < Object.keys(aa).length; i++) {
+                    if (i == Object.keys(aa).length - 1) {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]];
+                    } else {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]] + "&";
+                    }
+                }
+            }
+            if (paramString != "?") {
+                url += paramString;
+            }
+            return url;
+        }
+        token();
+    </script>
+    <!-- 公用css -->
+    <link rel="stylesheet" href="./../../assets/css/common/reset.css">
+    <link rel="stylesheet" href="./../../assets/css/common/base.css">
+    <link rel="stylesheet" href="./../../assets/css/dist/dialog.css">
+    <link rel="stylesheet" href="./../../assets/css/Secondary_page/collect.css">
+    <!-- 上拉加载 -->
+    <link rel="stylesheet" href="./../../assets/css/dist/mescroll.css">
+</head>
+
+<body>
+    <!-- container st -->
+    <div class="container">
+        <div class="main" id="main">
+            <div class="collect_header">
+                <div class="title">我的收藏</div>
+                <div class="back"></div>
+            </div>
+            <div class="collect_container">
+                <div class="collect_title">
+                    <section class="tabSelect">
+                        <ul class="tabs clear">
+                            <li>
+                                <a class="liactive" href="javascript:;" name="info">资讯</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" name="expert">专家</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" name="index">指标</a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+            <ul class="info_ul" id="info_ul">
+                <!-- <li>
+                    <div class="content">
+                        <div class="title"><a href="./../pages/essay_detail.html?fInfoId=611">100大中城市住宅类用地供应面积</a></div>
+                        <div class="tip">
+                            <p>admin</p>
+                            <p>2018-09-21 10:37:29</p>
+                        </div>
+                    </div>
+                    <img class="img" src="./../../assets/images/forecast/bg_1.png">
+                </li> -->
+            </ul>
+            <ul class="index_ul" id="index_ul">
+                <!-- <li>
+                    <div><a href="./../pages/forecast_index.html?topic=9">3333333333</a></div>
+                    <div>
+                        <p>12333</p>
+                    </div>
+                </li> -->
+            </ul>
+            <ul class="expert_ul" id="expert_ul">
+                <!-- <li>
+                    <div><img src="./../../assets/images/header.png"></div>
+                    <div>
+                        <a href="javascript:;">姓名姓名·姓名姓名</a>
+                        <p class="rank">头衔</p>
+                        <p class="rank">头衔</p>
+                        <p class="lable"><span>标签1</span><span>标签2</span></p>
+                        <p class="lable"><span>标签3</span><span>标签4</span></p>
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <!--移动端适配-->
+    <script type="text/javascript" src="./../../assets/js/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./../../assets/js/common/sizerem.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="./../../assets/js/dist/dialog.js"></script>
+    <script type="text/javascript" src="./../../assets/js/dist/mescroll.js"></script>
+    <script type="text/javascript" src="./../../assets/js/common/common.js"></script>
+    <script type="text/javascript" src="./../../assets/js/Secondary_page/collect.js"></script>
+</body>
+
+</html>

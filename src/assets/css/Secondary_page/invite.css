@@ -1,0 +1,143 @@
+.main {
+    height: 100%;
+    display: none;
+    flex-direction: column;
+}
+
+.invite_container .banner {
+    position: relative;
+    width: 100%;
+    height: 4.65rem;
+    background: url('./../../images/invite/banner.png') no-repeat center/cover;
+}
+
+.banner .back {
+    background: url(./../../images/btn/back.png) no-repeat center/contain;
+    display: inline-block;
+    margin-top: 0.2rem;
+}
+
+.invite_container .content {
+    width: 100%;
+    background: url('./../../images/invite/con_bg1.png') no-repeat center/cover;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.invite_container .content .tab {
+    width: 7rem;
+    height: 1.1rem;
+    background: -webkit-linear-gradient(to bottom, #f45353, #f92421);
+    background: -o-linear-gradient(to bottom, #f45353, #f92421);
+    background: -moz-linear-gradient(to bottom, #f45353, #f92421);
+    background: linear-gradient(to bottom, #f45353, #f92421);
+    margin-top: 0.16rem;
+    border-radius: 40px;
+}
+
+.content .tab ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.1rem;
+}
+
+.content .tab ul li {
+    width: 48%;
+    height: 0.9rem;
+    float: left;
+    line-height: 0.9rem;
+    font-size: 0.3rem;
+    color: #fff;
+    text-align: center;
+}
+
+.content .tab ul li.active {
+    background-color: #ffad20;
+    border-radius: 30px;
+}
+
+.invite_container .content .con {
+    width: 7rem;
+    height: 8.5rem;
+    background: url('./../../images/invite/con_bg2.png') no-repeat center/cover;
+    margin: 0.16rem 0;
+}
+
+.poster {
+    display: none;
+}
+
+/* 邀请奖励 */
+.reward .title {
+    width: 5.8rem;
+    height: 1.6rem;
+    border-bottom: 1px dashed #ff5429;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.reward .title div {
+    display: inline-block;
+    width: 50%;
+}
+
+.reward .title div p:first-child {
+    font-size: 0.3rem;
+    color: #555;
+}
+
+.reward .title div p:last-child {
+    font-size: 0.26rem;
+    color: #000;
+}
+
+.reward .title div span {
+    color: #f63e3c;
+    font-size: 0.6rem;
+}
+
+.reward h4 {
+    width: 3.81rem;
+    height: 0.45rem;
+    background: url(./../../images/invite/title_bg.png) no-repeat center/cover;
+    margin: 0 auto;
+    margin-top: 0.4rem;
+    text-align: center;
+    color: #ff6c64;
+    font-size: 0.48rem;
+    line-height: 0.34rem;
+}
+
+.reward article {
+    font-size: 0.3rem;
+    color: #373737;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 0.6rem;
+    line-height: 0.6rem;
+}
+
+.reward article span {
+    font-size: 0.36rem;
+    color: #ff6c64;
+}
+
+/* 邀请海报 */
+.poster h5 {
+    font-size: 0.24rem;
+    color: #000;
+    margin: 0.2rem 0.8rem;
+}
+
+.poster img {
+    width: 5.6rem;
+    height: 7rem;
+    margin: 0 auto;
+    display: block;
+}

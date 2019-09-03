@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no,telephone=no" />
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title></title>
+    <script>
+        if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent))) {
+            window.location.href = "http://www.tjresearch.cn";
+        }
+
+        function token() {
+            var time = 1000 * 60 * 15;
+            var sessionData = sessionStorage.getItem("Authentication");
+            if (sessionData == null || JSON.parse(sessionData).data == undefined) {
+                if (window.location.href.split("token=").length == 1) {
+                    sessionStorage.removeItem("Authentication");
+                } else {
+                    sessionStorage.removeItem("Authentication");
+                    sessionStorage.setItem("Authentication", JSON.stringify({
+                        data: parseURL(window.location.href).token,
+                        time: new Date().getTime()
+                    }));
+                    window.location.href = getUrlParam(window.location.href);
+                }
+            } else if (new Date().getTime() - JSON.parse(sessionData).time > time) {
+                sessionStorage.removeItem("Authentication");
+                sessionStorage.setItem("Authentication", JSON.stringify({
+                    data: parseURL(window.location.href).token,
+                    time: new Date().getTime()
+                }));
+                window.location.href = getUrlParam(window.location.href);
+            }
+        }
+        //获取url中的参数
+        function parseURL(url) {
+            var urlCopy = url.replace(/\&amp;/g, "&").split("?")[1];
+            var res = {};
+            if (urlCopy) {
+                var para = urlCopy.split("&");
+                var len = para.length;
+                var arr = [];
+                for (var i = 0; i < len; i++) {
+                    arr = para[i].split("=");
+                    res[arr[0]] = decodeURI(decodeURI(arr[1]))
+                }
+            }
+            return res;
+        };
+        // 切token
+        function getUrlParam(param) {
+            var aa = parseURL(param),
+                url = param.split("?")[0],
+                paramString = "?";
+            delete aa.token;
+            if (Object.keys(aa) == 1) {
+                Object.keys(aa).forEach(function (v) {
+                    paramString = paramString + v + "=" + aa[v];
+                })
+            } else {
+                for (var i = 0; i < Object.keys(aa).length; i++) {
+                    if (i == Object.keys(aa).length - 1) {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]];
+                    } else {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]] + "&";
+                    }
+                }
+            }
+            if (paramString != "?") {
+                url += paramString;
+            }
+            return url;
+        }
+        token();
+    </script>
+    <!-- 公用css -->
+    <link rel="stylesheet" href="./../../assets/css/common/reset.css">
+    <link rel="stylesheet" href="./../../assets/css/common/base.css">
+    <link rel="stylesheet" href="./../../assets/css/dist/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="./../../assets/css/dist/dialog.css">
+    <!-- <link rel="stylesheet" href="./../../assets/css/dist/popoPicker.css"> -->
+    <link rel="stylesheet" href="./../../assets/css/dist/mobileSelect.css">
+    <!-- <link rel="stylesheet" href="./../../assets/css/dist/datePicker.css"> -->
+    <!-- <link rel="stylesheet" href="./../assets/css/dist/mescroll.css"> -->
+    <link rel="stylesheet" href="./../../assets/css/Secondary_page/energy_radarPage.css">
+    <style>
+        #box {
+            height: 250px;
+            background-color: #42424f;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- container st -->
+    <div class="container">
+        <div class="main">
+            <div class="back_wrap">
+                <a class="back" href="">
+                </a>
+                <div class="energy_title_wrap">
+                    <div class="energy_title">增长动能</div>
+                </div>
+                <div class="title_info"></div>
+            </div>
+            <div class="energy_content_wrap">
+                <div class="swiper-container energy_container">
+                    <div class="my-pagination">
+                        <ul class="my-pagination-ul energy_tab_ul"></ul>
+                    </div>
+                    <div class="swiper-wrapper swiper-no-swiping">
+
+                        <div class="swiper-slide">
+                            <div class="radar_content">
+                                <div class="time_picker_wrap">
+                                    <!-- 时间选择器 -->
+                                    <div class="time_picker_box">
+                                        <div class="time_picker_main">
+                                            <!-- <img class="previous_time"
+                                                src="./../../assets/images/energy/previous_btn.png" /> -->
+                                            <div class="time_picker"></div>
+                                            <!-- <img class="next_time" src="./../../assets/images/energy/next_btn.png" /> -->
+                                        </div>
+                                        <!-- <img class="time_picker_destory" src="./../../assets/images/energy/delete_btn.png" /> -->
+                                    </div>
+                                    <a class="time_picker_add">+ 添加日期</a>
+                                </div>
+                                <!-- 需求-当月动能结构 -->
+                                <div class="demand_chart_wrap chart_wrap">
+                                    <div class="radar_wrap">
+                                        <!-- <h4 class="radar_title">VAD组成成分贡献率（%）</h4> -->
+                                        <div class="radar_box"></div>
+                                    </div>
+                                    <div class="hor_bar_wrap">
+                                        <div class="hor_bar hor_bar_1">
+
+                                        </div>
+                                    </div>
+                                    <!-- <div class="hor_bar_wrap">
+                                        <div class="hor_bar">
+
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- 供给-当月动能结构 -->
+                                <div class="supply_chart_wrap chart_wrap">
+                                    <div class="time_split_wrap">
+                                        <ul class="time_split_ul hor_bar_tabs_ul">
+                                            <li class="time_split_list active" recentTime="10">前10名</li>
+                                            <li class="time_split_list" recentTime="20">前20名</li>
+                                            <li class="time_split_list" recentTime="35">前35名</li>
+                                            <li class="time_split_list" recentTime="all">所有数据</li>
+                                        </ul>
+                                        <div class="line_border"></div>
+                                    </div>
+                                    <!-- 排序方式 -->
+                                    <div class="sort_by_wrap">
+                                        <span class="sort_by sort_by_up">排序方式</span>
+                                    </div>
+                                    <div class="hor_bars_wrap">
+                                        <div class="hor_bars"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="swiper-slide ">
+                            <div class="bar_content">
+                                <div class="time_split_wrap">
+                                    <ul class="time_split_ul stack_bar_tabs_ul">
+                                        <li class="time_split_list active" recentTime="12">近一年</li>
+                                        <li class="time_split_list" recentTime="24">近二年</li>
+                                        <li class="time_split_list " recentTime="60">近五年</li>
+                                        <li class="time_split_list" recentTime="all">所有数据</li>
+                                    </ul>
+                                    <div class="line_border"></div>
+                                </div>
+                                <div class="item_filter_wrap">
+                                    <div class="item_filter_title">
+                                        <span>筛选</span>
+                                    </div>
+                                    <div class="item_filter_content">
+                                        <div class="selAll">
+                                            <input type="checkbox" id="selAll" checked />全选
+                                        </div>
+                                        <ul>
+                                            <!-- <li><input type="checkbox" class="input_item_checkbox" checked />HCOM</li>
+                                            <li><input type="checkbox" class="input_item_checkbox" checked />HCOM</li>
+                                            <li><input type="checkbox" class="input_item_checkbox" checked />HCOM</li>
+                                            <li><input type="checkbox" class="input_item_checkbox" checked />HCOM</li>
+                                            <li><input type="checkbox" class="input_item_checkbox" checked />HCOM</li> -->
+                                        </ul>
+                                        <div class="item_filter_bottom">
+                                            <button class="cancell">取消</button>
+                                            <button class="confirm">确定</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stack_bar_main">
+                                    <div id="stack_bar"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="index_select_layer">
+                <div class="index_select_wrap">
+                    <p class="index_select_top">指标选择（最多可同时选择5条指标）</p>
+                    <div id="index_select_middle">
+                        <!-- <div class="index_category_wrap">
+                            <div class="index_category_top">
+                                <p class="index_category_title">第一大类</p>
+                                <div class="index_category_info">
+                                    <span class="index_category_num">1</span>
+                                </div>
+                            </div>
+                            <div class="index_category_bottom">
+                                <ul class="index_category_ul">
+                                    <li class="index_category_list active">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="index_category_wrap">
+                            <div class="index_category_top">
+                                <p class="index_category_title">第二大类</p>
+                                <div class="index_category_info active">
+                                    <span class="index_category_num">1</span>
+                                </div>
+                            </div>
+                            <div class="index_category_bottom">
+                                <ul class="index_category_ul">
+                                    <li class="index_category_list active">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="index_category_wrap">
+                            <div class="index_category_top">
+                                <p class="index_category_title">第三大类</p>
+                                <div class="index_category_info">
+                                    <span class="index_category_num">1</span>
+                                </div>
+                            </div>
+                            <div class="index_category_bottom">
+                                <ul class="index_category_ul">
+                                    <li class="index_category_list active">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                    <li class="index_category_list">农林牧渔业</li>
+                                </ul>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="index_select_bottom">
+                        <div id="index_selected_top">
+                            <p>已选择行业</p>
+                            <ul id="index_selected_ul">
+                                <!-- <li class="index_selected_list">农林牧渔业</li>
+                                <li class="index_selected_list">石油和天然气</li>
+                                <li class="index_selected_list">黑色金属黑色金属黑色金属黑色金属色金属</li>
+                                <li class="index_selected_list">煤炭开采业</li>
+                                <li class="index_selected_list">农林牧渔业</li> -->
+                            </ul>
+                        </div>
+                        <div id="index_selected_bottom">
+                            <button id="cancell_select">取消</button>
+                            <button id="confirm_select">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- <div id="datePlugin" style="display:none;"></div> -->
+    <script type="text/javascript" src="./../../assets/js/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./../../assets/js/dist/echarts.min.js"></script>
+    <script type="text/javascript" src="./../../assets/js/dist/iscroll.js"></script>
+    <!-- <script type="text/javascript" src="./../../assets/js/dist/datePicker.js"></script> -->
+    <script type="text/javascript" src="./../../assets/js/common/sizerem.js"></script>
+    <script type="text/javascript" src="./../../assets/js/dist/swiper-3.4.2.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script type="text/javascript" src="./../../assets/js/common/common.js"></script>
+    <!-- <script type="text/javascript" src="./../../assets/js/dist/popoPicker.js"></script> -->
+    <script type="text/javascript" src="./../../assets/js/dist/mobileSelect.js"></script>
+    <!-- <script type="text/javascript" src="./../assets/js/dist/mescroll.js"></script> -->
+    <script type="text/javascript" src="./../../assets/js/dist/dialog.js"></script>
+    <script type="text/javascript" src="./../../assets/js/Secondary_page/energy_radarPage.js"></script>
+</body>
+
+</html>

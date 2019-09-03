@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no,telephone=no" />
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title></title>
+    <script>
+        if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent))) {
+            window.location.href = "http://www.tjresearch.cn";
+        }
+        function token() {
+            var time = 1000 * 60 * 15;
+            var sessionData = sessionStorage.getItem("Authentication");
+            if (sessionData == null || JSON.parse(sessionData).data == undefined) {
+                if (window.location.href.split("token=").length == 1) {
+                    sessionStorage.removeItem("Authentication");
+                } else {
+                    sessionStorage.removeItem("Authentication");
+                    sessionStorage.setItem("Authentication", JSON.stringify({
+                        data: parseURL(window.location.href).token,
+                        time: new Date().getTime()
+                    }));
+                    window.location.href = getUrlParam(window.location.href);
+                }
+            } else if (new Date().getTime() - JSON.parse(sessionData).time > time) {
+                sessionStorage.removeItem("Authentication");
+                sessionStorage.setItem("Authentication", JSON.stringify({
+                    data: parseURL(window.location.href).token,
+                    time: new Date().getTime()
+                }));
+                window.location.href = getUrlParam(window.location.href);
+            }
+        }
+        //获取url中的参数
+        function parseURL(url) {
+            var urlCopy = url.replace(/\&amp;/g, "&").split("?")[1];
+            var res = {};
+            if (urlCopy) {
+                var para = urlCopy.split("&");
+                var len = para.length;
+                var arr = [];
+                for (var i = 0; i < len; i++) {
+                    arr = para[i].split("=");
+                    res[arr[0]] = decodeURI(decodeURI(arr[1]))
+                }
+            }
+            return res;
+        };
+        // 切token
+        function getUrlParam(param) {
+            var aa = parseURL(param),
+                url = param.split("?")[0],
+                paramString = "?";
+            delete aa.token;
+            if (Object.keys(aa) == 1) {
+                Object.keys(aa).forEach(function (v) {
+                    paramString = paramString + v + "=" + aa[v];
+                })
+            } else {
+                for (var i = 0; i < Object.keys(aa).length; i++) {
+                    if (i == Object.keys(aa).length - 1) {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]];
+                    } else {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]] + "&";
+                    }
+                }
+            }
+            if (paramString != "?") {
+                url += paramString;
+            }
+            return url;
+        }
+        token();
+    </script>
+    <!-- 公用css -->
+    <link rel="stylesheet" href="./../assets/css/common/reset.css">
+    <link rel="stylesheet" href="./../assets/css/common/base.css">
+    <link rel="stylesheet" href="./../assets/css/dist/dialog.css">
+    <link rel="stylesheet" href="./../assets/css/myself.css">
+</head>
+
+<body>
+    <!-- container st -->
+    <div class="container">
+        <div class="main">
+            <div class="scroller">
+                <div class="my_banner">
+                    <div class="my_head">
+                        <div class="photo"></div>
+                    </div>
+                    <div class="label">未登录</div>
+                </div>
+                <div class="my_content">
+                    <ul class="my_ul">
+                        <a href="./pages/info.html">
+                            <li>
+                                <img src="./../assets/images/myself/info.png" alt="个人信息">个人信息
+                            </li>
+                        </a>
+                        <a href="./pages/product_center.html">
+                            <li>
+                                <img src="./../assets/images/myself/order.png" alt="商品中心">商品中心
+                            </li>
+                        </a>                        
+                        <a href="./pages/userSign.html">
+                            <li>
+                                <img src="./../assets/images/myself/userSign.png" alt="任务中心">任务中心
+                            </li>
+                        </a>
+                        <a href="./pages/integral.html">
+                            <li>
+                                <img src="./../assets/images/myself/integral.png" alt="我的资产">我的资产
+                            </li>
+                        </a>
+                        <a href="./pages/relevant.html">
+                            <li>
+                                <img src="./../assets/images/myself/relevant.png" alt="我的互动">我的互动
+                            </li>
+                        </a>
+                        <a href="./pages/purchase.html" class="link_from_myself">
+                            <li>
+                                <img src="./../assets/images/myself/purchase.png" alt="金币购买">金币购买
+                            </li>
+                        </a>
+                        <a href="./pages/collect.html">
+                            <li>
+                                <img src="./../assets/images/myself/collect.png" alt="我的收藏">我的收藏
+                            </li>
+                        </a>
+                        <a href="./pages/exchange.html" class="link_from_myself">
+                            <li>
+                                <img src="./../assets/images/myself/exchange.png" alt="金币兑换">金币兑换
+                            </li>
+                        </a>
+                        <a href="./pages/invite.html">
+                            <li>
+                                <img src="./../assets/images/myself/invite.png" alt="邀请好友">邀请好友
+                                <img class="hot" src="./../assets/images/myself/hot.gif" alt="hot">
+                            </li>
+                        </a>
+                        <a href="./pages/activation_center.html">
+                            <li>
+                                <img src="./../assets/images/myself/activation.png" alt="激活中心">激活中心
+                            </li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <a href="./forecast.html">
+                <em class="tab_forecast"></em>
+                <span>预测</span>
+            </a>
+            <a href="./participation.html">
+                <em class="tab_participation"></em>
+                <span>参与</span>
+            </a>
+            <a href="./expert.html">
+                <em class="tab_expert"></em>
+                <span>专家</span>
+            </a>
+            <a href="./information.html">
+                <em class="tab_information"></em>
+                <span>资讯</span>
+            </a>
+            <a href="./myself.html" class="activehome">
+                <em class="tab_myself"></em>
+                <span>我的</span>
+            </a>
+        </footer>
+    </div>
+    <!--移动端适配-->
+    <script type="text/javascript" src="./../assets/js/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/common/sizerem.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="./../assets/js/dist/dialog.js"></script>
+    <script type="text/javascript" src="./../assets/js/common/common.js"></script>
+    <script type="text/javascript" src="./../assets/js/myself.js"></script>
+</body>
+
+</html>

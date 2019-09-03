@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no,telephone=no" />
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title></title>
+    <script>
+        if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent))) {
+            window.location.href = "http://www.tjresearch.cn";
+        }
+        function token() {
+            var time = 1000 * 60 * 15;
+            var sessionData = sessionStorage.getItem("Authentication");
+            if (sessionData == null || JSON.parse(sessionData).data == undefined) {
+                if (window.location.href.split("token=").length == 1) {
+                    sessionStorage.removeItem("Authentication");
+                } else {
+                    sessionStorage.removeItem("Authentication");
+                    sessionStorage.setItem("Authentication", JSON.stringify({
+                        data: parseURL(window.location.href).token,
+                        time: new Date().getTime()
+                    }));
+                    window.location.href = getUrlParam(window.location.href);
+                }
+            } else if (new Date().getTime() - JSON.parse(sessionData).time > time) {
+                sessionStorage.removeItem("Authentication");
+                sessionStorage.setItem("Authentication", JSON.stringify({
+                    data: parseURL(window.location.href).token,
+                    time: new Date().getTime()
+                }));
+                window.location.href = getUrlParam(window.location.href);
+            }
+        }
+        //获取url中的参数
+        function parseURL(url) {
+            var urlCopy = url.replace(/\&amp;/g, "&").split("?")[1];
+            var res = {};
+            if (urlCopy) {
+                var para = urlCopy.split("&");
+                var len = para.length;
+                var arr = [];
+                for (var i = 0; i < len; i++) {
+                    arr = para[i].split("=");
+                    res[arr[0]] = decodeURI(decodeURI(arr[1]))
+                }
+            }
+            return res;
+        };
+        // 切token
+        function getUrlParam(param) {
+            var aa = parseURL(param),
+                url = param.split("?")[0],
+                paramString = "?";
+            delete aa.token;
+            if (Object.keys(aa) == 1) {
+                Object.keys(aa).forEach(function (v) {
+                    paramString = paramString + v + "=" + aa[v];
+                })
+            } else {
+                for (var i = 0; i < Object.keys(aa).length; i++) {
+                    if (i == Object.keys(aa).length - 1) {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]];
+                    } else {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]] + "&";
+                    }
+                }
+            }
+            if (paramString != "?") {
+                url += paramString;
+            }
+            return url;
+        }
+        token();
+    </script>
+    <!-- 公用css -->
+    <link rel="stylesheet" href="./../assets/css/common/reset.css">
+    <link rel="stylesheet" href="./../assets/css/common/base.css">
+    <link rel="stylesheet" href="./../assets/css/dist/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="./../assets/css/dist/dialog.css">
+    <link rel="stylesheet" href="./../assets/css/dist/mescroll.css">
+    <link rel="stylesheet" href="./../assets/css/expert.css">
+</head>
+
+<body>
+    <!-- container st -->
+    <div class="container">
+        <div class="main">
+            <!-- 轮播图 -->
+            <div class="expert_banner_wrap">
+                <div class="swiper-container expert_banner">
+                    <div class="swiper-wrapper expert_banner_wrapper">
+                        <!-- <div class="swiper-slide forecast_img2" style="background-image: url(./../images/forecast/bg_2.png);background-position: center;background-size: cover;"></div> -->
+                    </div>
+                    <div class="swiper-pagination expert_banner_page"></div>
+                </div>
+            </div>
+            <!-- content -->
+            <div class="content">
+                <!-- tab 专家库/专家之声 -->
+                <div class="swiper-container expert_container">
+                    <!-- <div class="expert_con_top"> -->
+                        <!-- 专家库/专家之声 -->
+                        <div class="my-pagination expert_tab">
+                            <ul class="my-pagination-ul expert_tab_ul">
+                                <!-- <li class="swiper-pagination-bullet">专家库</li> -->
+                            </ul>
+                        </div>
+                        <!-- 分类 -->
+                        <div class="expert_category">
+                            <div class="expert_category_uls">
+                                <!-- <ul class="expert_category_ul">
+                                    <li class="expert_category_list "><a class="col_1_hide" href="javascript:;">服务行业</a></li>
+                                </ul>
+                                <ul class="expert_category_ul">
+                                    <li class="expert_category_list "><a class="col_1_hide" href="javascript:;">服务行业</a></li>
+                                </ul> -->
+                            </div>
+                            <div class="expert_search_wrap">
+                                <div class="expert_search">关键字搜索</div>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+
+                    <!-- 专家库列表/专家之声列表 -->
+                    <div class="swiper-wrapper expert_tab_wrapper swiper-no-swiping">
+                        <!-- <div class="swiper-slide forecast_img2" style="background-image: url(./../images/forecast/bg_2.png);background-position: center;background-size: cover;"></div> -->
+                        <div  class="swiper-slide expert_slide">
+                            <div class="expert_wrap mescroll" id="expert_wrap">
+                                <ul class="swiper_slide_ul expert_ul" id="expert_ul">
+                                    <!-- <li class="expert_list">
+                                        <div class="expert_avatar"></div>
+                                        <div class="expert_intro">
+                                            <div class="expert_top">
+                                                <p class="expert_name"><a class="expert_name_link" href="javascript::">良辰美景奈何天</a></p>
+                                                <div class="follow_wrap">
+                                                    <div class="follow_btn unFollow">收藏</div>
+                                                </div>
+                                            </div>
+                                            <ul class="expert_rank">
+                                                <li class="col_1_hide">全国政协委员</li>
+                                                <li class="col_1_hide">全国政协委员全国政协委员全国政协委员全国政协委员全国政协委员全国政协委员</li>
+                                            </ul>
+                                            <ul class="expert_label_ul">
+                                                <li class="expert_label">标签01</li>
+                                                <li class="expert_label">标签标签0101</li>
+                                                <li class="expert_label">标签</li>
+                                                <li class="expert_label">标签标签01010000标签</li>
+                                                <li class="expert_label">10000标签</li>
+                                                <li class="expert_label">10000标签</li>
+                                                <li class="expert_label">10000标签</li>
+                                            </ul>
+                                        </div>
+                                    </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide expert_voice_slide">
+                            <div class="expert_voice_wrap mescroll" id="expert_voice_wrap">
+                                <div class="waiting"></div>
+                            </div>
+                        </div>
+                        <!-- 博智宏观论坛 -->
+                        <div class="swiper-slide expert_bozhi_slide">
+                            <div class="expert_bozhi_wrap mescroll">
+                                <div class="swiper_slide_ul expert_bozhi_ul">
+                                    <button class="sign_up_bozhi"><a href="http://www.tjresearch.cn/invitation/index.html?type=h5">点击报名</a></button>
+                                </div>
+                                <div class="bozhi_detail clear">
+                                    <a class="right" href="https://e.eqxiu.com/s/FYud8Nr0?share_level=1&from_user=201905290eb3b981&from_id=fe34ba0b-3&share_time=1560215615467&from=groupmessage&isappinstalled=0">博智宏观论坛详情介绍 >></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <a href="./forecast.html">
+                <em class="tab_forecast"></em>
+                <span>预测</span>
+            </a>
+            <a href="./participation.html">
+                <em class="tab_participation"></em>
+                <span>参与</span>
+            </a>
+            <a href="./expert.html" class="activehome">
+                <em class="tab_expert"></em>
+                <span>专家</span>
+            </a>
+            <a href="./information.html">
+                <em class="tab_information"></em>
+                <span>资讯</span>
+            </a>
+            <a href="./myself.html">
+                <em class="tab_myself"></em>
+                <span>我的</span>
+            </a>
+        </footer>
+        <div class="star_layer">
+            <div class="star_choose_wrap">
+                <p class="star_comment">用户评价</p>
+                <div class="star_wrap">
+                    <p class="bull star_text">利好</p>
+                    <div class="star_content">
+                        <ul class="star_ul">
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                        </ul>
+                    </div>
+                    <p class="bear star_text">利空</p>
+                </div>
+                <div class="star_confirm">确定</div>
+            </div>
+            <div class="star_close"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./../assets/js/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/common/sizerem.js"></script>
+    <script type="text/javascript" src="./../assets/js/dist/swiper-3.4.2.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script type="text/javascript" src="./../assets/js/common/common.js"></script>
+    <script type="text/javascript" src="./../assets/js/dist/mescroll.js"></script>
+    <script type="text/javascript" src="./../assets/js/dist/dialog.js"></script>
+    <script type="text/javascript" src="./../assets/js/expert.js"></script>
+</body>
+
+</html>

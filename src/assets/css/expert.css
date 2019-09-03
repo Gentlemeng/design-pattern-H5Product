@@ -1,0 +1,308 @@
+.main{
+    display:flex;
+    flex-direction: column;
+}
+.expert_banner_wrap{
+    height:2.5rem;
+}
+.expert_banner{
+    width:100%;
+    height:100%;
+}
+.expert_banner_wrapper{
+    width:100%;
+    height:100%;
+}
+.expert_banner_img{
+    width:100%;
+    height:100%;
+}
+.expert_banner_link{
+    display:block;
+    height:100%;
+    width:100%;
+}
+.content{
+    flex:1;
+}
+.expert_container{
+    display:flex;
+    flex-direction: column;
+    height:100%;
+}
+.expert_tab{
+    height:0.8rem;
+}
+.my-pagination.expert_tab .expert_tab_ul .swiper-pagination-bullet-active{
+    background:none;
+}
+.swiper_expert_p{
+    display:inline-block;
+}
+.my-pagination.expert_tab .expert_tab_ul .swiper-pagination-bullet-active p{
+    background-color: #fff;
+    color: #0d97c9;
+    border-bottom: 2px solid #0d97c9;
+    height: 0.6rem;
+}
+.my-pagination-ul.expert_tab_ul {
+    display: flex;
+    justify-content: space-between;
+    height: .8rem;
+    padding: 0 .5rem;
+    border: none;
+    background-color: #fff;
+    border-bottom: 1px solid #e5e5e5;
+}
+.my-pagination-ul.expert_tab_ul li {
+    /* margin: 0 .3rem; */
+    width: 2rem;
+    /* width:auto; */
+    /* flex: 1; */
+    height: .6rem;
+    line-height: .6rem;
+    font-size: 0.28rem;
+}
+.expert_tab_left{
+    float: left;
+}
+.expert_tab_right{
+    float:right;
+}
+.expert_category{
+    display:flex;
+    /* height:1.24rem; */
+    margin-bottom: 0.08rem;
+    padding:0 0.3rem 0 0.3rem;
+    background-color: #fff;
+}
+.expert_category_uls{
+    flex:1;
+    /* display:flex; */
+    /* flex-wrap: wrap; */
+    height: 1.12rem;
+    /* max-height: 0.84rem; */
+    overflow-y: scroll;
+    margin:0.16rem 0 0 0;
+}
+.expert_category_ul{
+    overflow: hidden;
+    display: flex;
+}
+.expert_category_list{
+    /* 这里的100%不是li的真实宽，而是为了根据flex布局占位 */
+    width:100%;
+    height: 0.4rem; 
+    margin:0 0 0.16rem 0;
+}
+.expert_category_list a{
+    display:inline-block;
+    /* width:0.86rem; */
+    max-width:1rem;
+    height:0.4rem;
+    line-height:0.4rem;
+    font-size:0.24rem;
+    color:#818181;
+}
+.expert_category_list.active a{
+    color:#0d97c9;
+    font-weight: bold;
+    border-bottom:2px solid #0d97c9;
+}
+.expert_search_wrap{
+    width:2.1rem;
+}
+.expert_search{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height:0.4rem;
+    margin-top:0.16rem;
+    text-align:center;
+    font-size:0.2rem;
+    border-radius: 0.2rem;
+    color:#a6a6a6;
+    background:url("./../images/btn/search_btn.png") no-repeat 0.2rem center/0.22rem 0.18rem;
+    background-color: #eeeeee;
+}
+.expert_search_input{
+    width:4.16rem;
+    height:0.5rem;
+    text-indent: 1em;
+    border:1px solid #eeeeee;
+    border-radius:0;
+}
+.expert_scroll{
+    flex:1;
+}
+.expert_tab_wrapper{
+    flex:1;
+}
+.expert_tab_wrapper .swiper-slide{
+    /* max-height: 100%; */
+    overflow-y:scroll;
+    background-color:#d7d7d7;
+}
+.expert_wrap,.expert_voice_wrap,.expert_bozhi_wrap{
+    height:100%;
+    background-color:#fff;
+}
+.expert_voice_wrap{
+    background: none;
+}
+.waiting{
+    width:3.4rem;
+    height:.3rem;
+    margin: 1.8rem auto 0;
+    background:url("./../images/expert/waiting.png") no-repeat center/cover;
+}
+.swiper-slide .swiper_slide_ul{
+    /* height:100%; */
+    /* margin:0 0.3rem; */
+}
+.expert_ul{
+}
+.expert_list{
+    display:flex;
+    justify-content: space-between;
+    padding: 0 0.3rem;
+    overflow: hidden;
+    background-color:#fff;
+}
+.expert_list:first-child .expert_avatar,.expert_list:first-child .expert_intro{
+    margin-top:0.3rem;
+}
+.expert_link{
+    display:inline-block;
+}
+.expert_avatar,.expert_intro{
+    margin-bottom:0.3rem;
+}
+.expert_avatar{
+    display:inline-block;
+    width:2rem;
+    height:3rem;
+}
+.expert_avatar div{
+    width:2rem;
+    height:3rem;
+    border-radius: 0.2rem;
+}
+.expert_intro{
+    flex:1;
+    max-width: 4.4rem;
+}
+.expert_top{
+    display:flex;
+    margin-bottom: 0.06rem;
+}
+.expert_name{
+    flex:1;
+    max-width: 3.4rem;
+    height:0.66rem;
+    line-height: 0.66rem;
+    color:#000;
+}
+.expert_name_link{
+    display:inline-block;
+    height:0.66rem;
+    line-height: 0.66rem;
+    font-size: 0.32rem;
+}
+.follow_wrap{
+    max-width:1.8rem;
+    line-height: 0.66rem;
+}
+.follow_btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 .1rem;
+    height: 0.36rem;
+    line-height: 0.36rem;
+    /* display: inline-block; */
+    color: #1db4eb;
+    font-size: 0.24rem;
+    text-align: center;
+    text-indent: 0.32rem;
+}
+.followed {
+    background: url(./../images/btn/followed_blue.png) no-repeat 0.1rem 0.02rem/0.28rem 0.28rem;
+}
+.unFollow {
+    background: url(./../images/btn/unFollow_blue.png) no-repeat 0.1rem 0.02rem/0.28rem 0.28rem;
+}
+.expert_rank{
+    min-height:0.8rem;
+    margin-bottom:0.3rem;
+    /* overflow: hidden; */
+}
+.expert_rank li{
+    max-width:100%;
+    /* height: 0.8rem; */
+    line-height: 0.4rem;
+    color:#5d5d5d;
+    font-size:0.28rem;
+}
+.expert_label_ul{
+    max-height:0.92rem;
+    overflow: hidden;
+}
+.expert_label{
+    display:flex;
+    width:100%;
+    height:0.46rem;
+    line-height:0.46rem;
+    margin-right:0.4rem;
+    font-size:0.28rem;
+    color:#5cc7ee;
+}
+.expert_label_list{
+    margin-right:0.5rem;
+}
+/* 专家之声 */
+.expert_bozhi_ul{
+    position: relative;
+    width:100%;
+    /* height:17rem; */
+    /* min-height:18.24rem; */
+    /* background:url("./../images/expert/sign_in_bozhi_bg.png") no-repeat center/cover; */
+}
+.sign_up_bozhi{
+    display: none;
+    position: absolute;
+    /* top:10rem;
+    left:0.5rem; */
+    width:6.5rem;
+    height:1rem;
+    border-radius: 0.5rem;
+    /* #34c6c6 */
+    background-color:#03db8d;
+    background: -webkit-linear-gradient(0deg,#34c6c6 0%,#03db8d 100%);
+    background: -moz-linear-gradient(0deg,#34c6c6 0%,#03db8d 100%);
+    background: -o-linear-gradient(0deg,#34c6c6 0%,#03db8d 100%);
+    background: -ms-linear-gradient(0deg,#34c6c6 0%,#03db8d 100%);
+    background: linear-gradient(90deg,#34c6c6 0%,#03db8d 100%);
+    background-color:#14bb5a;
+}
+.sign_up_bozhi a{
+    display:block;
+    height:1rem;
+    line-height:1rem;
+    font-size:0.32rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    color:#fff;
+}
+.bozhi_detail{
+    height:1.24rem;
+}
+.bozhi_detail a{
+    display:inline-block;
+    height:1.24rem;
+    line-height: 1.24rem;
+    margin-right:0.5rem;
+    font-size:0.245rem;
+    color:#00b7ee;
+}
+

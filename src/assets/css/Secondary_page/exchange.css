@@ -1,0 +1,256 @@
+/* banner图和返回 */
+.container{
+    background: #fff;   
+} 
+body, html{   
+    background: #fff;
+} 
+.head{
+    width: 100%;
+    height: 2.78rem;
+    background-image:url("../../images/myself/exchangeHead.png");
+    background-size:100%;
+    background-position:left top;
+}
+.head .head_top{
+    width: 100%;
+    height: 1rem;
+}
+.backbtn{
+    height: 1rem;
+    padding-left: 0.2rem;
+    display: block;
+    line-height: 1rem;
+    display: flex;
+    align-items:Center;
+}
+.backbtn img{
+    width: 0.7rem;
+    height: 0.24rem;
+}
+/* .head .head_cont{
+    width: 100%;
+    height: 2.13rem;
+}
+.head .head_cont .text{
+    width: 100%;
+    height: 0.96rem;
+
+} */
+.exchange_detail{
+    width: 100%;
+    height: 3.98rem;
+    background: #fff;
+    padding: 0 0.2rem;
+    overflow: hidden;
+    border-bottom: 0.05rem solid #eeeeee;
+    
+}
+.exchange_detail .detail_title{
+    width: 100%;
+    height: 0.6rem;
+    border-bottom: 0.01rem solid #e5e5e5;
+}
+.exchange_detail .detail_title .title{
+    color: #262626;
+    font-size: 0.2rem;
+    line-height:0.6rem;
+    font-weight: 400;
+}
+.exchange_detail .detail_cont{
+    width: 100%;
+    height: 3.38rem;
+
+}
+.exchange_detail .detail_cont .credits_top{
+    width: 100%;
+    height: 0.66rem;
+    
+}
+.exchange_detail .detail_cont .credits_top .history_credits{
+    color: #666;
+    font-size: 0.2rem;
+    line-height: 0.66rem;
+}
+.exchange_detail .detail_cont .credits_top .history_credits .credits_numble, .golds_numble{
+    color: #ff7612;
+    font-size: 0.2rem;
+}
+.exchange_detail .detail_cont .credits_top .rate{
+    float: right;
+    color: #666;
+    font-size: 0.2rem;
+    line-height: 0.66rem;
+}
+.exchange_detail .detail_cont .credits_top .rate .rate_numble{
+    color: #ff7612;
+    font-size: 0.2rem;
+}
+.exchange_detail .detail_cont .credits_cont{
+    width: 100%;
+    height: 1.62rem;
+}
+.input_box{
+    width: 100%;
+    padding:0.15rem 0;
+    color: #000;
+    font-size: 0.24rem;
+    text-align: center;
+}
+.input_box input{
+    border: 0.01rem solid #e1e0e0;
+    height: 0.32rem;
+    width: 1.4rem;
+    text-align: center;
+    box-sizing: border-box;
+    line-height: 0.02rem;
+    padding: 0 0;
+    font-size: 0.20rem;
+}
+.credits_spend{
+    width: 100%;
+    height: 0.96rem;    
+    text-align: center;
+    padding-top: 0.16rem; 
+
+}
+.spend_title, .numble, .spend_credits{
+    color: #ff7612;
+    font-size: 0.24rem;
+
+}
+.credits_footer{
+    width: 100%;
+    height: 1rem;
+    text-align:center;
+    padding-top: 0.16rem; 
+}
+.credits_footer button{
+    width: 6.16rem;
+    height: 0.7rem;
+    background: #019fe6;
+    color: #fff;
+    font-size: 0.24rem;
+    border-radius: 0.1rem;
+}
+.exchange_history{
+    width: 100%;
+    background: #fff;
+    padding: 0 0.2rem;
+}
+.history_title{
+    width: 100%;
+    height: 0.7rem;
+    color: #333333;    
+    line-height:0.7rem;
+    font-weight: 400;
+    border-bottom: 0.01rem solid #e5e5e5;
+    font-size: 0.2rem;
+}
+.history_box{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0.5rem;
+}
+.history_box ul li{
+    width: 100%;
+    height: 0.58rem;
+    border-bottom: 0.01rem dashed #e5e5e5;
+}
+.history_box ul .nomore{
+    width: 100%;
+    height: 0.58rem;
+    text-align: center;
+    font-size: 0.2rem;
+    color: #333;
+    line-height: 0.58rem;
+}
+.history_box ul li span{
+    display: block;
+    width: 25%;
+    height: 100%;
+    text-align: center;
+    line-height: 0.58rem;
+    font-size: 0.2rem;
+    color: #333;
+    float: left;
+    /* padding-left:0.05rem; */
+    overflow: hidden;
+}
+.history_box ul li span:nth-child(3){
+    text-align: right;
+    padding-right: 0.4rem;
+}
+/* .alertBox{
+    position: absolute;
+    top: 40%;
+    left: 7.5%;
+    z-index: 10001;
+    width: 85%;
+    overflow: hidden;
+    background-color: #FAFAFC;
+    text-align: center;
+    border-radius: 3px;
+    display: none;
+}
+.cover{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    filter:alpha(Opacity=65);-moz-opacity:0.65;opacity: 0.65;
+    display: none;
+}
+.alertCont{
+    padding: 15px 20px 0;
+    font-size: 14px;
+    color: #666;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: center;
+}
+.alertCont span{
+    font-size: 100%;
+    line-height: 0.78rem;
+    color: #848484;
+    margin: 5px 0;
+    text-align: center;
+}
+.alertBox .buttom{
+    position: relative;
+    line-height: 42px;
+    margin-top: 20px;
+    font-size: 16px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;    
+    border-top: 1px solid #D5D5D6;
+}
+.alertBox .buttom span{
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: #0BB20C;
+    outline: none;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+

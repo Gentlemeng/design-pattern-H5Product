@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no,telephone=no" />
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title></title>
+    <script>
+        if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent))) {
+            window.location.href = "http://www.tjresearch.cn";
+        }
+        function token() {
+            var time = 1000 * 60 * 15;
+            var sessionData = sessionStorage.getItem("Authentication");
+            if (sessionData == null || JSON.parse(sessionData).data == undefined) {
+                if (window.location.href.split("token=").length == 1) {
+                    sessionStorage.removeItem("Authentication");
+                } else {
+                    sessionStorage.removeItem("Authentication");
+                    sessionStorage.setItem("Authentication", JSON.stringify({
+                        data: parseURL(window.location.href).token,
+                        time: new Date().getTime()
+                    }));
+                    window.location.href = getUrlParam(window.location.href);
+                }
+            } else if (new Date().getTime() - JSON.parse(sessionData).time > time) {
+                sessionStorage.removeItem("Authentication");
+                sessionStorage.setItem("Authentication", JSON.stringify({
+                    data: parseURL(window.location.href).token,
+                    time: new Date().getTime()
+                }));
+                window.location.href = getUrlParam(window.location.href);
+            }
+        }
+        //获取url中的参数
+        function parseURL(url) {
+            var urlCopy = url.replace(/\&amp;/g, "&").split("?")[1];
+            var res = {};
+            if (urlCopy) {
+                var para = urlCopy.split("&");
+                var len = para.length;
+                var arr = [];
+                for (var i = 0; i < len; i++) {
+                    arr = para[i].split("=");
+                    res[arr[0]] = decodeURI(decodeURI(arr[1]))
+                }
+            }
+            return res;
+        };
+        // 切token
+        function getUrlParam(param) {
+            var aa = parseURL(param),
+                url = param.split("?")[0],
+                paramString = "?";
+            delete aa.token;
+            if (Object.keys(aa) == 1) {
+                Object.keys(aa).forEach(function (v) {
+                    paramString = paramString + v + "=" + aa[v];
+                })
+            } else {
+                for (var i = 0; i < Object.keys(aa).length; i++) {
+                    if (i == Object.keys(aa).length - 1) {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]];
+                    } else {
+                        paramString = paramString + Object.keys(aa)[i] + "=" + aa[Object.keys(aa)[i]] + "&";
+                    }
+                }
+            }
+            if (paramString != "?") {
+                url += paramString;
+            }
+            return url;
+        }
+        token();
+    </script>
+    <!-- 公用css -->
+    <link rel="stylesheet" href="./../../assets/css/common/reset.css">
+    <link rel="stylesheet" href="./../../assets/css/common/base.css">
+    <link rel="stylesheet" href="./../../assets/css/dist/dialog.css">
+    <link rel="stylesheet" href="./../../assets/css/dist/mescroll.css">
+    <link rel="stylesheet" href="./../../assets/css/Secondary_page/essay_detail.css">
+</head>
+
+<body>
+    <!-- container st -->
+    <div class="container">
+        <div id="essayMain" class="main mescroll">
+            <div class="back_wrap">
+                <a class="back" href="./../information.html">
+                    <!-- <img src="./../../assets/images/btn/back_bg.png">
+                    <p class="back_text">返回</p> -->
+                </a>
+            </div>
+            <div class="essay_detail">
+                <!-- <div class="essay_title justify">A股高开低走 创业板跌逾1% 蔚来汽车概念股爆发</div>
+                <div class="essay_introduce">
+                    <div class="essay_author">
+                        <span class="author_txt">作者:</span>
+                        <i class="essay_auth">廖志红</i>
+                        <span class="essay_publish_time">2018-09-30</span>
+                    </div>
+                    <div class="essay_length">
+                        <span class="num_txt">字数</span>
+                        <i class="essay_num">770</i>
+                        <span class="need_txt">阅读需</span>
+                        <span class="essay_need">2分钟</span>
+                    </div>
+                </div>
+                <div class="essay_summary justify">
+                    <span class="summary">摘要：</span>蔚来汽车概念股龙头奥特佳、诚迈科技、文山股份、德联集团、江淮汽车一字板，常熟汽饰、旭升股份纷纷大涨。
+                </div>
+                <div class="essay_text justify">
+                    
+                </div> -->
+            </div>
+            <ul class="switch_essay"> 
+            </ul>
+            <!-- <div class="essay_handle_wrap">
+                <div class="essay_handle">
+                    <div class="support">
+                        <button class="opinion_btn support_btn">支持</button>
+                    </div>
+                    <div class="oppose">
+                        <button class="opinion_btn oppose_btn">反对</button>
+                    </div>
+                </div>
+                <div class="essay_opinion">
+                    <div class="opinion_detail">
+                        <div class="support_detail">
+                            支持：<span class="support_percent">68%</span>
+                        </div>
+                        <div class="oppose_detail">
+                            反对：<span class="oppose_percent">32%</span>
+                        </div>
+                    </div>
+                    <div class="opinion_bar">
+                        <div class="support_bar"></div>
+                        <div class="oppose_bar"></div>
+                    </div>
+                    <div class="my_opinion">
+                        你已经选择<span class="opinion_txt">支持</span>,恭喜您投票成功。
+                    </div>
+                </div>
+            </div> -->
+            <div class="wonderful_txt">精彩评论</div>
+            <div class="wonderful_comment">
+                <ul class="wonderful_comment_ul">
+                    <!-- <li class="comment_list">
+                            <div class="comment_handle_wrap">
+                                <div class="comment_user">
+                                    <span class="user_avatar"></span>
+                                    <span class="user_name">${li</span>
+                                </div>
+                                <div class="comment_handle">
+                                    <div class="comment_attitude" parent_id="${list.fCommentId}">
+                                        <span class="hand like"></span>
+                                        <i class="like_num">${li</i>
+                                        <span class="hand dislike"></span>
+                                        <i class="dislike_num">${li</i>
+                                        <span class="answer_comment">回复</span>
+                                        <i class="comment_num">${li</i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment_con">
+                                <p class="comment_txt">${li</p>
+                            </div>
+                            <div class="comment_response">
+                                <ul class="comment_response_ul">
+                                    <li class="comment_response_list justify">
+                                        <span class="act_response">小明</span>
+                                        <i class="colon">:</i>
+                                        我是John Li, 我的车子修好了没有？多少钱？能便宜一点吗？能开电子发票吗？能扫一扫支付吗？
+                                    </li>
+                                    <li class="comment_response_list justify">
+                                        <span class="act_response">小明</span>
+                                        <i class="response_txt">回复</i>
+                                        <span class="unact_response">小红</span>
+                                        <i class="colon">:</i>
+                                        我是John Li, 我的车子修好了没有？多少钱？
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> -->
+                </ul>
+                <!-- <p class="no_data">无更多数据</p> -->
+            </div>
+            <div class="latest_txt">最新评论</div>
+            <ul id="latestCommentUl" class="latest_comment_ul">
+                <!-- <li class="comment_list">
+                                    <div class="comment_handle_wrap">
+                                        <div class="comment_user">
+                                            <span class="user_avatar"></span>
+                                            <span class="user_name">${li</span>
+                                        </div>
+                                        <div class="comment_handle">
+                                            <div class="comment_attitude" parent_id="${list.fCommentId}">
+                                                <span class="hand like"></span>
+                                                <i class="like_num">${li</i>
+                                                <span class="hand dislike"></span>
+                                                <i class="dislike_num">${li</i>
+                                                <span class="answer_comment">回复</span>
+                                                <i class="comment_num">${li</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment_con">
+                                        <p class="comment_txt">${li</p>
+                                    </div>
+                                    <div class="comment_response">
+                                        <ul class="comment_response_ul">
+                                            <li class="comment_response_list justify">
+                                                <span class="act_response">小明</span>
+                                                <i class="colon">:</i>
+                                                我是John Li, 我的车子修好了没有？多少钱？能便宜一点吗？能开电子发票吗？能扫一扫支付吗？
+                                            </li>
+                                            <li class="comment_response_list justify">
+                                                <span class="act_response">小明</span>
+                                                <i class="response_txt">回复</i>
+                                                <span class="unact_response">小红</span>
+                                                <i class="colon">:</i>
+                                                我是John Li, 我的车子修好了没有？多少钱？
+                                            </li>
+                                        </ul>
+                                    </div>
+                        </li> -->
+            </ul>
+        </div>
+        <footer class="publish">
+            <textarea id="txt" placeholder="发表评论"></textarea>
+            <!-- <input type="text" id="txt" placeholder="发表评论" /> -->
+            <p class="send">发送</p>
+        </footer>
+        <div class="star_layer">
+            <div class="star_choose_wrap">
+                <p class="star_comment">用户评价</p>
+                <div class="star_wrap">
+                    <p class="bull star_text"></p>
+                    <div class="star_content">
+                        <ul class="star_ul">
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                            <li class='star'>R</li>
+                        </ul>
+                    </div>
+                    <p class="bear star_text"></p>
+                </div>
+                <div class="star_confirm">确定</div>
+            </div>
+            <div class="star_close"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./../../assets/js/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./../../assets/js/common/sizerem.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script type="text/javascript" src="./../../assets/js/common/common.js"></script>
+    <script type="text/javascript" src="./../../assets/js/dist/dialog.js"></script>
+    <script type="text/javascript" src="./../../assets/js/dist/mescroll.js"></script>
+    <script type="text/javascript" src="./../../assets/js/Secondary_page/essay_detail.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,327 @@
+.container .main{
+    margin-bottom: 1rem;
+}
+.energy_chart_wrap {
+    background-color: #363949;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header .energy_title {
+    font-size: 0.26rem;
+    text-align: center;
+    line-height: 0.6rem;
+    color: #fff;
+}
+
+.header .follow {
+    height: 0.36rem;
+    color: #fff;
+    font-size: 0.2rem;
+    line-height: 0.32rem;
+    border-radius: 16px;
+    text-align: center;
+    cursor: pointer;
+    padding: 0 .2rem;
+    border: 1px solid #fff;
+    margin-right: 0.2rem;
+}
+
+/* bar chart start */
+.energy_swiper_wrap {
+    margin-top: 0.2rem;
+    padding: 0 0.15rem;
+}
+
+.energy .my-pagination li {
+    height: 0.6rem;
+    line-height: 0.6rem;
+    position: relative;
+    font-size: 0.26rem;
+}
+
+.energy_chart_slide {
+    height: 7rem;
+    overflow: scroll;
+}
+
+.energy_chart {
+    height: 25rem;
+}
+
+/* bar chart end */
+
+/* 专家评论 */
+.comment .content,
+.opinion .content,
+.newOpinion .content {
+    background-color: #fff;
+    padding: 0.1rem 0.3rem 0 0.3rem;
+    text-align: center;
+}
+
+.comment .title,
+.opinion .title,
+.newOpinion .title {
+    font-size: 0.3rem;
+    color: #333;
+    line-height: 0.7rem;
+    margin-left: 0.3rem;
+}
+
+.comment .content .article {
+    font-size: 0.26rem;
+    color: #333;
+    line-height: 0.42rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid #d2d2d2;
+    text-align: justify;
+}
+
+.comment .content a {
+    font-size: 0.24rem;
+    color: #555;
+    line-height: 0.76rem;
+}
+
+.comment .content .operate {
+    margin: 0 auto;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.comment .content .operate .btns {
+    width: 80%;
+    display: none;
+    margin: 0 auto;   
+    margin-bottom: 0.2rem;
+}
+
+.comment .content .operate .btns .support,
+.comment .content .operate .btns .oppose {
+    width: 1.6rem;
+    height: 0.55rem;
+    display: inline-block;
+    border-radius: 10px;
+    color: #fff;
+    font-size: .24rem;
+    line-height: 0.55rem;
+}
+
+.comment .content .operate .btns .support {
+    background: -webkit-linear-gradient(to left, #f45454, #ff2222);
+    background: -o-linear-gradient(to left, #f45454, #ff2222);
+    background: -moz-linear-gradient(to left, #f45454, #ff2222);
+    background: linear-gradient(to left, #f45454, #ff2222);
+    float: left;
+}
+
+.comment .content .operate .btns .oppose {
+    background: -webkit-linear-gradient(to right, #14bb5b, #5feb7d);
+    background: -o-linear-gradient(to right, #14bb5b, #5feb7d);
+    background: -moz-linear-gradient(to right, #14bb5b, #5feb7d);
+    background: linear-gradient(to right, #14bb5b, #5feb7d);
+    float: right;
+}
+
+.comment .content .operate .result {
+    width: 100%;
+    display: none;
+}
+
+.comment .content .operate .result .tip {
+    font-size: 0.3rem;
+    line-height: 0.7rem;
+    color: #333;
+}
+
+.comment .content .operate .result .tip span {
+    color: #ff2222;
+    font-size: 0.36rem;
+}
+
+/* 精彩评论 */
+.opinion_ul li {
+    margin-top: 0.2rem;
+    border-bottom: 1px solid #cfcfcf;
+}
+
+.opinion_ul .user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.opinion_ul .user .tips {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.opinion_ul .user .tips .photo {
+    background-image: url(./../../images/header.png);
+    background-position: center;
+    background-size: contain;
+    border-radius: 50%;
+    width: 0.6rem;
+    height: 0.6rem;
+}
+
+.opinion_ul .user .tips .info {
+    margin-left: 0.2rem;
+    font-size: 0.24rem;
+    color: #333;
+}
+
+.opinion_ul .user .btns {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.opinion_ul .user .btns p {
+    font-size: 0.26rem;
+    color: #333;
+    text-align: left;
+}
+.opinion_ul .user .btns .supp{
+    color: #d51f07;
+}
+
+.opinion_ul .user .btns .support,
+.opinion_ul .user .btns .oppose {
+    background-position: center;
+    background-size: cover;
+    width: 0.36rem;
+    height: 0.36rem;
+    margin: 0 0.2rem;
+}
+
+.opinion_ul .user .btns .reply {
+    width: 1rem;
+    font-size: 0.18rem;
+    color: #096393;
+    height: 0.36rem;
+    line-height: 0.36rem;
+}
+.opinion_ul .replyli{
+    text-align: left;
+    font-size: 0.23rem;
+    color: #096393;
+    line-height: 0.38rem;
+    margin: 0.2rem 0;
+    width: 1.6rem;
+}
+.opinion_ul .content {
+    text-align: left;
+    font-size: 0.23rem;
+    color: #333;
+    line-height: 0.38rem;
+    margin: 0.2rem 0;
+}
+#opinion_ul{
+    background-color: #fff;
+    padding: 0.1rem 0.3rem 0 0.3rem;
+    text-align: center;
+}
+.mescroll-upwarp{
+    background-color: #fff;
+}
+.container .publish {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 1rem;
+    width: 100%;
+    background: #fff;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+}
+
+.container .publish .send {
+    display: inline-block;
+    text-align: center;
+}
+.reply_content {
+    border: 1px solid #cfcfcf;
+    text-align: left;
+    padding: 0 .3rem .2rem .3rem;
+    margin-bottom: 0.3rem;
+    display: none;
+}
+
+.reply_content .reply_ul li {
+    border-bottom: 1px solid transparent;
+}
+
+.reply_content .reply_ul li span:nth-child(1) {
+    font-size: .26rem;
+    color: #6097c5;
+    margin-right: .1rem;
+}
+
+.reply_content .reply_ul li span:nth-child(1) span {
+    color: #555;
+    margin-left: .1rem;
+}
+
+.reply_content .reply_ul li span:nth-child(2) {
+    line-height: .38rem;
+    font-size: .23rem;
+    color: #333;
+}
+
+.reply_content .reply_ul li span:nth-child(3) {
+    float: right;
+    font-size: 0.18rem;
+    color: #333;
+    height: 0.36rem;
+    line-height: 0.36rem;
+}
+
+.comment,
+.opinion,
+.newOpinion,
+#publish {
+    display: none;
+}
+.comment .tips{
+    text-align: center;
+    background-color: #fff;
+    font-size: 0.24rem;
+    color: #555;
+    line-height: 0.76rem;
+}
+
+/* 修改 */
+.my-pagination .swiper-pagination-bullet-active{
+    color: #5c61fd;
+    border-bottom: 2px solid #5c61fd;
+    background-color:transparent;
+}
+.my-pagination ul{
+    border: unset;
+}
+.my-pagination li{
+    border-bottom: 2px solid #fff;
+    color: #fff;
+    background-color:transparent;
+}
+/* 支持反对图 */
+.comment .content .operate .result #result_chart{
+    width: 7.5rem;
+    height: 2rem;
+}

@@ -1,0 +1,43 @@
+.container .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+}
+
+.container .logo img {
+    width: 2.1rem;
+    height: 0.3rem;
+}
+
+.container .success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container .success h3 {
+    color: #ff2400;
+    font-size: 0.4rem;
+    font-weight: bold;
+    height: 1.4rem;
+}
+
+.container .success img {
+    width: 3.44rem;
+    height: 3.44rem;
+    margin-bottom: 0.2rem;
+}
+
+.container .success p {
+    color: #474747;
+    font-size: 0.3rem;
+    padding: 0 0.66rem;
+    line-height: 0.6rem;
+    font-weight: 500;
+}
+
+.container .success p span {
+    color: #5771bb;
+}

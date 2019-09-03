@@ -1,0 +1,102 @@
+@charset "UTF-8";
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.container .main{
+    background-color: #fff;
+}
+.container .main .scroller {
+    position: relative;
+}
+.banner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.banner .back{
+    margin-top: 0.2rem;
+    background-image: url(./../../images/btn/back_bg.png);
+}
+
+.info_ul {
+    padding: 0 0.6rem;
+}
+
+.info_ul li {
+    height: 1.1rem;
+    border-bottom: 1px solid #d6d6d6;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.info_ul li.pic{    
+    height: 1.6rem;
+}
+.info_ul li span{
+    font-size: 0.32rem;
+    color: #333;
+}
+.info_ul li .rightList{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+}
+.info_ul li .rightList .arrow {
+    display: inline-block;
+    width: 0.17rem;
+    height: 0.32rem;
+}
+.info_ul li .rightList .userPic{
+    background-image: url(./../../images/answer_user_avatar.png);
+    width: 1.4rem;
+    height: 1.4rem;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    margin-right: 0.2rem;
+}
+#imgFile{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.info_ul li .rightList .tip{
+    color: #ccc;
+    font-size: 0.3rem;
+    margin-right: 0.2rem;
+    height: 1rem;
+    line-height: 1rem;
+    width: 80%;
+    text-align: right;
+}
+.commit{
+    width: 5.76rem;
+    height: 0.74rem;
+    background: -webkit-linear-gradient(to bottom, #355983, #15263a);
+    background: -o-linear-gradient(to bottom, #355983, #15263a);
+    background: -moz-linear-gradient(to bottom, #355983, #15263a);
+    background: linear-gradient(to bottom, #355983, #15263a);
+    margin: 0 auto;
+    display: block;
+    margin-top: 0.6rem;
+    color: #fff;
+    font-size: 0.3rem;
+    border-radius: 6px;
+}
+.mobileSelect .content .btnBar .cancel,
+.mobileSelect .content .btnBar .ensure{
+    color:#ff6600
+}
+.dialog-content-bd span{
+    margin-right: 0.14rem;
+}
+.dialog-content-bd .userName,
+.dialog-content-bd .email{
+    border: 1px solid #ddd;
+    padding: 0.1rem;
+    width: 80%;
+}
