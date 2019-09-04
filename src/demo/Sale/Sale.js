@@ -1,12 +1,14 @@
 import $ from "jquery"
 import { BaseList, CompositeList } from "../ProductList/ProductList";
 
+
 export default class Sale{
     constructor(id){
         this.$el = $("#"+id);
     }
     init(){
         this.initBaseList();
+        this.initCompositeList();
     }
     initBaseList(){
         let baseList = new BaseList(this,"basic_module","基础版块");

@@ -12,6 +12,21 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <title></title>
+    <style>
+        #container{
+            height:100%;
+        }
+        #product_slide{
+            height:100%;
+            display:flex;
+            flex-direction: column;
+        }
+        #product_wrap{
+            flex:1;
+            overflow:scroll;
+        }
+
+    </style>
     <script>
         if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent))) {
             window.location.href = "http://www.tjresearch.cn";
@@ -92,7 +107,19 @@
     <div id="container">
         <div id="product_slide">
             <div id="product_wrap">
-                
+                    <!-- <li class="group_product_list product_list" isSuperme='true' price="1000" save="1000">
+                        <div class="product_select_wrap">
+                            <div class="product_select"></div>
+                            <div class="group_img" style="background:url('./../../assets/images/product_center/group_img01.png') no-repeat center left/contain">
+                                <div class="product_layer"></div>
+                            </div>
+                        </div>
+                        <div class="group_info">
+                            <div class="group_name">至尊组合</div>
+                            <div class="group_price">998金币/年</div>
+                            <div class="group_save">(可节省1902金币)</div>
+                        </div>
+                    </li>-->
             </div>
             <!-- <div class="settlement_wrap">
                 <div class="balance_wrap">

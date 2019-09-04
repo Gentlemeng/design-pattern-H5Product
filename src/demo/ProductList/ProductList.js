@@ -1,18 +1,16 @@
 import $ from "jquery"
-import { GET_DISCOUNT, GET_BASEPRODUCT } from "../config/config";
+import { GET_DISCOUNT, GET_BASEPRODUCT, GET_COMPOSITEPRODUCT } from "../config/config";
 import createProduct from "../Product/createProduct";
-
 class ProductList{
-    constructor(className,title){
+    constructor(sale,className,title){
+        this.sale = sale;
         this.$el = $(`<div class="${className}"></div>`)
         this.title = title;
     }
 }
 export class BaseList extends ProductList{
     constructor(sale,className,title){
-        super(className,title)
-        this.sale = sale;
-        this.title = title;
+        super(sale,className,title)
         this.discount;
         this.disCondition;
         this.productUl = $(`<ul class="basic_product_ul"></ul>`)
@@ -50,8 +48,10 @@ export class BaseList extends ProductList{
         if(data.length){
             //创建一个product  然后init
             data.forEach(productData => {
-                createProduct(this,productData);
+                
+                createProduct(this,productData,"baseProduct");
             });
+            this.$el.append(this.productUl)
         }
     }
     render(){
@@ -61,20 +61,55 @@ export class BaseList extends ProductList{
                 this.discount = data[0].discountCost;
                 this.disCondition = data[0].discountNum;
             }
-        }).then(()=>{
             this.initTitle();
+        }).then(()=>{
+           //请求基础数据相关
+            this.loadProduct().then(data=>{
+                this.initProductList(data);
+            }) 
         })
-        //请求基础数据相关
-        this.loadProduct().then(data=>{
-            this.initProductList(data);
-            this.$el.append(this.productUl)
-        })
+        
         this.sale.$el.append(this.$el);
     }
 }
-export class CompositeList extends ProductList{  
+
+export class CompositeList extends ProductList{
     constructor(sale,className,title){
-        super(className,title)
-        this.sale = sale;
-    }  
+        super(sale,className,title)
+        this.productUl = $(`<ul class="group_product_ul"></ul>`)
+    }
+    init(){
+        
+        this.render();
+    }
+    initTitle(){
+        let title = $(`<div class="module_title">${this.title}</div>`)              
+        this.$el.append(title);
+    }
+    loadProduct(){
+        return fetch(GET_COMPOSITEPRODUCT).then(data=>{
+            if(data.ok){
+                return data.json();
+            }
+        })
+    }
+    initProductList(data){
+        if(data.length){
+            //创建一个product  然后init
+            data.forEach(productData => {
+                createProduct(this,productData,"compositeProduct");
+            });
+            this.$el.append(this.productUl)
+        }
+    }
+    render(){
+        this.initTitle();
+        //请求基础数据相关
+        this.loadProduct().then((data)=>{
+            this.initProductList(data);
+        })
+        
+        this.sale.$el.append(this.$el);
+    }
 }
+
