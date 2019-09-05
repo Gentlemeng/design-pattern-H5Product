@@ -7,6 +7,9 @@ class ProductList{
         this.$el = $(`<div class="${className}"></div>`)
         this.title = title;
     }
+    init(){
+        this.render();
+    }
 }
 export class BaseList extends ProductList{
     constructor(sale,className,title){
@@ -14,9 +17,6 @@ export class BaseList extends ProductList{
         this.discount;
         this.disCondition;
         this.productUl = $(`<ul class="basic_product_ul"></ul>`)
-    }
-    init(){
-        this.render();
     }
     initTitle(){
         let title = $(`<div class="module_title">${this.title}</div>`)
@@ -77,10 +77,6 @@ export class CompositeList extends ProductList{
     constructor(sale,className,title){
         super(sale,className,title)
         this.productUl = $(`<ul class="group_product_ul"></ul>`)
-    }
-    init(){
-        
-        this.render();
     }
     initTitle(){
         let title = $(`<div class="module_title">${this.title}</div>`)              
