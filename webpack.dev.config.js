@@ -15,10 +15,10 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, "./release"),  // 根目录
         open: true,  // 自动打开浏览器
-        port: 9000,   // 端口
+        port: 9001,   // 端口
         proxy: {
             '/api/*': {
-                target: 'http://localhost:8880'
+                target: 'http://localhost:8881'
             }
         }
     },
